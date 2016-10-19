@@ -3,7 +3,7 @@ import FWCore.ParameterSet.Config as cms
 from FWCore.ParameterSet.VarParsing import VarParsing
 
 options = VarParsing('analysis')
-options.register('isData', False,
+options.register('isData', True,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
     "Is data?"
@@ -38,7 +38,7 @@ options.register('signalType', '',
     VarParsing.varType.string,
     "Select one of EvtType_MC_tZtZ, EvtType_MC_tZtH, EvtType_MC_tZbW, EvtType_MC_tHtH, EvtType_MC_tHbW, EvtType_MC_bWbW, EvtType_MC_bZbZ, EvtType_MC_bZbH, EvtType_MC_bZtW, EvtType_MC_bHbH, EvtType_MC_bHtW, EvtType_MC_tWtW" 
     )
-options.register('applyLeptonSFs', True,
+options.register('applyLeptonSFs', False,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
     "Apply lepton SFs to the MC"
@@ -102,7 +102,24 @@ process.source = cms.Source(
     "PoolSource",
     fileNames = cms.untracked.vstring(
       #FileNames[options.FileNames]
-      'file:/afs/cern.ch/user/d/devdatta/eos/cms/store/group/phys_b2g/B2GAnaFW_76X_V1p2/TprimeTprime_M-1800_TuneCUETP8M1_13TeV-madgraph-pythia8/B2GAnaFW_RunIIFall15MiniAODv2_25ns_v76x_v1p2/160410_205229/0000/B2GEDMNtuple_1.root', 
+   # 'root://cms-xrd-global.cern.ch//store/group/phys_b2g/B2GAnaFW_80X_V2p0/TprimeTprime_M-800_TuneCUETP8M1_13TeV-madgraph-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0/160811_185354/0000/B2GEDMNtuple_1.root',     
+   # 'root://cms-xrd-global.cern.ch//store/group/phys_b2g/skhi/B2GAnaFW_80X_V2p0_RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/DoubleEG/RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/160914_162605/0001/B2GEDMNtuple_1345.root',
+#'root://cms-xrd-global.cern.ch//store/group/phys_b2g/skhi/B2GAnaFW_80X_V2p0_RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/DoubleMuon/RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/160914_162636/0000/B2GEDMNtuple_230.root',
+
+#    'root://cms-xrd-global.cern.ch//store/group/phys_b2g/B2GAnaFW_80X_V2p0/DYJetsToLL_M-50_HT-100to200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0/160825_160530/0000/B2GEDMNtuple_1.root',
+#'root://cms-xrd-global.cern.ch//store/group/phys_b2g/B2GAnaFW_80X_V2p0/DYJetsToLL_M-50_HT-1200to2500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0/160825_162354/0000/B2GEDMNtuple_13.root',
+#'root://eoscms.cern.ch//store/group/phys_b2g/B2GAnaFW_80X_V2p0/DYJetsToLL_M-50_HT-1200to2500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0/160825_162354/0000/B2GEDMNtuple_13.root',
+#'root://eoscms.cern.ch//store/group/phys_b2g/B2GAnaFW_80X_V2p0/TprimeTprime_M-800_TuneCUETP8M1_13TeV-madgraph-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0/160811_185354/0000/B2GEDMNtuple_1.root',
+
+'root://eoscms.cern.ch//store/group/phys_b2g/skhi/B2GAnaFW_80X_V2p0_RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/DoubleMuon/RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/160914_162636/0000/B2GEDMNtuple_230.root',   
+#'root://cms-xrd-global.cern.ch//store/group/phys_b2g/B2GAnaFW_80X_V2p0/TprimeTprime_M-800_TuneCUETP8M1_13TeV-madgraph-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0/160811_185354/0000/B2GEDMNtuple_1.root',
+
+   # 'root://eoscms.cern.ch//store/group/phys_b2g/B2GAnaFW_80X_V2p0/TprimeTprime_M-800_TuneCUETP8M1_13TeV-madgraph-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0/160811_185354/0000/B2GEDMNtuple_1.root',
+
+#'root://cms-xrd-global.cern.ch//store/group/phys_b2g/skhi/B2GAnaFW_80X_V2p0_RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/DoubleMuon/RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/160914_162636/0003/B2GEDMNtuple_3452.root',
+
+
+    #'file:/afs/cern.ch/user/d/devdatta/eos/cms/store/group/phys_b2g/B2GAnaFW_76X_V1p2/TprimeTprime_M-1800_TuneCUETP8M1_13TeV-madgraph-pythia8/B2GAnaFW_RunIIFall15MiniAODv2_25ns_v76x_v1p2/160410_205229/0000/B2GEDMNtuple_1.root', 
       #'file:/afs/cern.ch/work/d/devdatta/CMSREL/B2GAnaFW_76X/CMSSW_7_6_3_patch2/src/Analysis/B2GAnaFW/test/B2GEDMNtuple_DYJets_M50Madgraph.root',
       #'/store/user/jkarancs/SusyAnalysis/B2GEdmNtuple/DYJetsToLL_M-50_HT-600toInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/B2GAnaFW_76X_V1p1_RunIIFall15MiniAODv2-PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/160401_102909/0000/B2GEDMNtuple_1.root'
       #'root://cms-xrd-global.cern.ch//store/user/jkarancs/SusyAnalysis/B2GEdmNtuple/TT_TuneCUETP8M1noCR_13TeV-powheg-pythia8/B2GAnaFW_76X_V1p1_RunIIFall15MiniAODv2-PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/160401_092930/0000/B2GEDMNtuple_13.root'
@@ -110,7 +127,7 @@ process.source = cms.Source(
     )
 
 process.load("FWCore.MessageService.MessageLogger_cfi")
-process.MessageLogger.cerr.FwkReport.reportEvery = 1000
+process.MessageLogger.cerr.FwkReport.reportEvery = 1
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(options.maxEvents) )
 
 process.load("Analysis.VLQAna.EventCleaner_cff") 
@@ -136,7 +153,7 @@ process.ana.muselParams.muidtype = cms.string(options.lepID)
 process.ana.muselParams.muIsoMax = cms.double(0.15)
 process.ana.lepsfsParams.lepidtype = cms.string(options.lepID)
 process.ana.lepsfsParams.zdecayMode = cms.string(options.zdecaymode)
-process.ana.BoostedZCandParams.ptMin = cms.double(80.)
+#process.ana.BoostedZCandParams.ptMin = cms.double(80.)
 process.ana.jetAK8selParams.jetPtMin = cms.double(200) 
 process.ana.jetAK4BTaggedselParams.jetPtMin = cms.double(50) 
 process.ana.STMin = cms.double(1000.)

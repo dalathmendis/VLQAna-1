@@ -87,10 +87,10 @@ void ElectronMaker::operator () (edm::Event& evt, vlq::ElectronCollection& elect
     double missHits=(h_elmissHits.product())->at(iel);
     bool   isEB = (h_elscEta.product())->at(iel) < 1.479 ;
   
-    bool elisLoose  = passElId("LOOSE" , isEB, dEtaIn, dPhiIn, full5x5siee, HoE, D0, Dz, ooEmooP, elIso, hasMatchedConVeto, missHits);
-    bool elisMedium = passElId("MEDIUM", isEB, dEtaIn, dPhiIn, full5x5siee, HoE, D0, Dz, ooEmooP, elIso, hasMatchedConVeto, missHits); 
-    bool elisTight  = passElId("TIGHT" , isEB, dEtaIn, dPhiIn, full5x5siee, HoE, D0, Dz, ooEmooP, elIso, hasMatchedConVeto, missHits);  
-    bool elisVeto   = passElId("VETO"  , isEB, dEtaIn, dPhiIn, full5x5siee, HoE, D0, Dz, ooEmooP, elIso, hasMatchedConVeto, missHits);  
+    bool elisLoose  = passElId("LOOSE" , isEB, dPhiIn, full5x5siee, HoE ,ooEmooP, elIso, missHits, hasMatchedConVeto);
+    bool elisMedium = passElId("MEDIUM", isEB, dPhiIn, full5x5siee, HoE,ooEmooP, elIso, missHits, hasMatchedConVeto); 
+    bool elisTight  = passElId("TIGHT" , isEB, dPhiIn, full5x5siee, HoE, ooEmooP, elIso, missHits, hasMatchedConVeto);  
+    bool elisVeto   = passElId("VETO"  , isEB, dPhiIn, full5x5siee, HoE, ooEmooP, elIso, missHits, hasMatchedConVeto);  
 
     bool passId(false); 
     if (type_ == LOOSE  && elisLoose ) passId = true ;
@@ -137,41 +137,89 @@ void ElectronMaker::operator () (edm::Event& evt, vlq::ElectronCollection& elect
 
 }
 
-
-bool ElectronMaker::passElId(string WP, bool isEB, float dEtaIn, float dPhiIn, float full5x5, float hoe, float d0, float dz, float ooemoop,float Iso03,bool conv,int missHits){ 
+//new 8_0_x
+bool ElectronMaker::passElId(string WP, bool isEB, float dPhiIn, float full5x5, float hoe, float ooemoop,float Iso03,int missHits, bool conveto){ 
    
    bool pass = false;
    if(WP == "VETO"){
       if(isEB){
-         pass = (fabs(dEtaIn) < 0.0152) && (fabs(dPhiIn) < 0.216) && (full5x5 < 0.0114) && (hoe < 0.181) && (fabs(d0) < 0.0564) && (fabs(dz) < 0.472) && (ooemoop < 0.207) && (Iso03 < 0.126)  && !conv && (missHits <= 2);
+         pass = (fabs(dPhiIn) < 0.228) && (full5x5 < 0.0115) && (hoe < 0.356) && (ooemoop < 0.299) && (Iso03 < 0.175)  && (missHits <= 2) && !conveto;
       }
       else{
-         pass = (fabs(dEtaIn) < 0.0113) && (fabs(dPhiIn) < 0.237) && (full5x5 < 0.0352) && (hoe < 0.116) && (fabs(d0) < 0.222) && (fabs(dz) < 0.921) && (ooemoop < 0.174) && (Iso03 < 0.144) && !conv && (missHits <= 3);
+         pass = (fabs(dPhiIn) < 0.213) && (full5x5 < 0.037) && (hoe < 0.211) &&  (ooemoop < 0.15) && (Iso03 < 0.159) && (missHits <= 3) && !conveto;
       }
    }
    else if(WP == "LOOSE"){
       if(isEB){
-         pass = (fabs(dEtaIn) < 0.0105) && (fabs(dPhiIn) < 0.115) && (full5x5 <  0.0103) && (hoe < 0.104) && (fabs(d0) < 0.0261) && (fabs(dz) < 0.41) && (ooemoop <  0.102) && (Iso03 < 0.0893)  && !conv && (missHits <= 2);
+         pass = (fabs(dPhiIn) < 0.222) && (full5x5 <  0.011) && (hoe < 0.298)  && (ooemoop <  0.241) && (Iso03 < 0.0994) && (missHits <= 1) && !conveto;
       }
       else{
-         pass = (fabs(dEtaIn) < 0.00814) && (fabs(dPhiIn) < 0.182) && (full5x5 < 0.0301) && (hoe < 0.0897) && (fabs(d0) < 0.118) && (fabs(dz) < 0.822) && (ooemoop < 0.126) && (Iso03 < 0.121)  && !conv && (missHits <= 1);
+         pass =(fabs(dPhiIn) < 0.213) && (full5x5 < 0.0314) && (hoe < 0.101)  && (ooemoop < 0.14) && (Iso03 < 0.107)  && (missHits <= 1) && !conveto;
       }
    }
    else if(WP == "MEDIUM"){
       if(isEB){
-         pass = (fabs(dEtaIn) < 0.0103) && (fabs(dPhiIn) < 0.0336) && (full5x5 < 0.0101) && (hoe < 0.0876) && (fabs(d0) < 0.0118) && (fabs(dz) < 0.373) && (ooemoop < 0.0174) && (Iso03 < 0.0766)  && !conv && (missHits <= 2);
+         pass = (fabs(dPhiIn) < 0.103) && (full5x5 < 0.00998) && (hoe < 0.253) && (ooemoop < 0.134) && (Iso03 < 0.0695)  && (missHits <= 1) && !conveto;
       }
       else{
-         pass = (fabs(dEtaIn) < 0.00773) && (fabs(dPhiIn) < 0.114) && (full5x5 <  0.0283) && (hoe < 0.0678) && (fabs(d0) < 0.0739) && (fabs(dz) < 0.602) && (ooemoop < 0.0898) && (Iso03 < 0.0678) && !conv && (missHits <= 1);
+         pass =(fabs(dPhiIn) < 0.045) && (full5x5 <  0.0298) && (hoe < 0.0878) && (ooemoop < 0.13) && (Iso03 < 0.0821)  && (missHits <= 1) && !conveto;
       }
    }
    else if(WP == "TIGHT"){
       if(isEB){
-         pass = (fabs(dEtaIn) < 0.00926) && (fabs(dPhiIn) < 0.0336) && (full5x5 < 0.0101) && (hoe < 0.0597) && (fabs(d0) < 0.0111) && (fabs(dz) <  0.466) && (ooemoop <  0.012) && (Iso03 < 0.0354)  && !conv && (missHits <= 2);
+         pass = (fabs(dPhiIn) < 0.0816) && (full5x5 < 0.00998) && (hoe < 0.0414) &&  (ooemoop <  0.0129) && (Iso03 < 0.0588) && (missHits <= 1) && !conveto;
       }
       else{
-         pass = (fabs(dEtaIn) < 0.00724) && (fabs(dPhiIn) < 0.0918) && (full5x5 < 0.0279) && (hoe < 0.0615) && (fabs(d0) < 0.0351) && (fabs(dz) < 0.417) && (ooemoop <  0.00999)  && (Iso03 < 0.0646) && !conv && (missHits <= 1);
+         pass =(fabs(dPhiIn) < 0.0394) && (full5x5 < 0.0292) && (hoe < 0.0641) && (ooemoop <  0.0129)  && (Iso03 < 0.0571) && (missHits <= 1) && !conveto;
       }
    }
    return pass;
-} 
+
+
+
+}
+/*
+//7_6_X
+
+bool ElectronMaker::passElId(string WP, bool isEB, float dEtaIn, float dPhiIn, float full5x5, float hoe, float d0, float dz, float ooemoop,float Iso03,bool conv,int missHits){
+
+  bool pass = false;
+  if(WP == "VETO"){
+    if(isEB){
+      pass = (fabs(dEtaIn) < 0.0152) && (fabs(dPhiIn) < 0.216) && (full5x5 < 0.0114) && (hoe < 0.181) && (fabs(d0) < 0.0564) && (fabs(dz) < 0.472) && (ooemoop < 0.207) && (Iso03 < 0.126)  && !conv && (missHits <= 2);
+    }
+    else{
+      pass = (fabs(dEtaIn) < 0.0113) && (fabs(dPhiIn) < 0.237) && (full5x5 < 0.0352) && (hoe < 0.116) && (fabs(d0) < 0.222) && (fabs(dz) < 0.921) && (ooemoop < 0.174) && (Iso03 < 0.144) && !conv && (missHits <= 3);
+    }
+  }
+  else if(WP == "LOOSE"){
+    if(isEB){
+      pass = (fabs(dEtaIn) < 0.0105) && (fabs(dPhiIn) < 0.115) && (full5x5 <  0.0103) && (hoe < 0.104) && (fabs(d0) < 0.0261) && (fabs(dz) < 0.41) && (ooemoop <  0.102) && (Iso03 < 0.0893)  && !conv && (missHits <= 2);
+    }
+    else{
+      pass = (fabs(dEtaIn) < 0.00814) && (fabs(dPhiIn) < 0.182) && (full5x5 < 0.0301) && (hoe < 0.0897) && (fabs(d0) < 0.118) && (fabs(dz) < 0.822) && (ooemoop < 0.126) && (Iso03 < 0.121)  && !conv && (missHits <= 1);
+    }
+  }
+  else if(WP == "MEDIUM"){
+    if(isEB){
+      pass = (fabs(dEtaIn) < 0.0103) && (fabs(dPhiIn) < 0.0336) && (full5x5 < 0.0101) && (hoe < 0.0876) && (fabs(d0) < 0.0118) && (fabs(dz) < 0.373) && (ooemoop < 0.0174) && (Iso03 < 0.0766)  && !conv && (missHits <= 2);
+    }
+    else{
+      pass = (fabs(dEtaIn) < 0.00773) && (fabs(dPhiIn) < 0.114) && (full5x5 <  0.0283) && (hoe < 0.0678) && (fabs(d0) < 0.0739) && (fabs(dz) < 0.602) && (ooemoop < 0.0898) && (Iso03 < 0.0678) && !conv && (missHits <= 1);
+    }
+  }
+  else if(WP == "TIGHT"){
+    if(isEB){
+      pass = (fabs(dEtaIn) < 0.00926) && (fabs(dPhiIn) < 0.0336) && (full5x5 < 0.0101) && (hoe < 0.0597) && (fabs(d0) < 0.0111) && (fabs(dz) <  0.466) && (ooemoop <  0.012) && (Iso03 < 0.0354)  && !conv && (missHits <= 2);
+    }
+    else{
+      pass = (fabs(dEtaIn) < 0.00724) && (fabs(dPhiIn) < 0.0918) && (full5x5 < 0.0279) && (hoe < 0.0615) && (fabs(d0) < 0.0351) && (fabs(dz) < 0.417) && (ooemoop <  0.00999)  && (Iso03 < 0.0646) && !conv && (missHits <= 1);
+    }
+  }
+  return pass;
+
+
+
+}
+
+*/

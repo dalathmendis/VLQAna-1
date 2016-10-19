@@ -83,7 +83,8 @@ class BTagSFUtils {
   }
 
     BTagSFUtils () : 
-      calib_          (new BTagCalibration("CSVv2","subjet_CSVv2_ichep.csv")), 
+      // calib_          (new BTagCalibration("CSVv2","subjet_CSVv2_ichep.csv")), 
+      calib_          (new BTagCalibration("CSVv2","CSVv2_ichep.csv")),
       reader_         (new BTagCalibrationReader(BTagEntry::OP_LOOSE,"central")), 
       readerUp_       (new BTagCalibrationReader(BTagEntry::OP_LOOSE,"up")), 
       readerDown_     (new BTagCalibrationReader(BTagEntry::OP_LOOSE,"down")),
@@ -184,8 +185,8 @@ class BTagSFUtils {
         double dsfUp = sfUp - sf ; 
         double dsfDown = sfDown - sf ;
         double eff = 1.0;
-        if ( op_ == BTagEntry::OP_LOOSE) BTagSFUtils::getBTagEff_CSVv2L(pt,flhad) ; 
-        else if ( op_ == BTagEntry::OP_MEDIUM) BTagSFUtils::getBTagEff_CSVv2M(pt,flhad) ; 
+        if ( op_ == BTagEntry::OP_LOOSE) eff = BTagSFUtils::getBTagEff_CSVv2L(pt,flhad) ; 
+        else if ( op_ == BTagEntry::OP_MEDIUM) eff = BTagSFUtils::getBTagEff_CSVv2M(pt,flhad) ; 
         double uncscale = uncscales.at(idx.first) ; 
         sfs.push_back(sf) ; 
         sfsUp.push_back(sfUp) ; 
@@ -199,13 +200,13 @@ class BTagSFUtils {
         if ( sfUpabs < 0 ) sfUpabs = 0 ;  
         if ( sfDownabs < 0 ) sfDownabs = 0 ;  
 
-        if ( boost::math::isnan(sf) || boost::math::isnan(sfUp) || boost::math::isnan(sfUpabs))
-          std::cout << " sf = " << sf << " is nan = " << boost::math::isnan(sf) << std::endl ; 
-          std::cout << " sfUp = " << sfUp << " is nan = " << boost::math::isnan(sfUp) << std::endl ; 
-          std::cout << " dsfUp = " << dsfUp << " is nan = " << boost::math::isnan(dsfUp) << std::endl ; 
-          std::cout << " sfUpabs = " << sfUpabs << " is nan = " << boost::math::isnan(sfUpabs) << std::endl ; 
+	// if ( boost::math::isnan(sf) || boost::math::isnan(sfUp) || boost::math::isnan(sfUpabs))
+	  //std::cout << " sf = " << sf << " is nan = " << boost::math::isnan(sf) << std::endl ; 
+	  //std::cout << " sfUp = " << sfUp << " is nan = " << boost::math::isnan(sfUp) << std::endl ; 
+	  //std::cout << " dsfUp = " << dsfUp << " is nan = " << boost::math::isnan(dsfUp) << std::endl ; 
+	  //std::cout << " sfUpabs = " << sfUpabs << " is nan = " << boost::math::isnan(sfUpabs) << std::endl ; 
 
-        double jetcsv = jetcsvs.at(idx.first) ; 
+	double jetcsv = jetcsvs.at(idx.first) ; 
         if ( jetcsv >= csvMin ) { 
           btagsf *= sf ; 
 

@@ -1,3 +1,64 @@
+# from cmssw/SimGeneral/MixingModule/python/mix_2016_25ns_SpringMC_PUScenarioV1_PoissonOOTPU_cfi.py
+#link https://github.com/cms-sw/cmssw/blob/CMSSW_8_0_X/SimGeneral/MixingModule/python/mix_2016_25ns_SpringMC_PUScenarioV1_PoissonOOTPU_cfi.py
+
+probValue_80X= [
+  0.000829312873542,
+  0.00124276120498,
+  0.00339329181587,
+  0.00408224735376,
+  0.00383036590008,
+  0.00659159288946,
+  0.00816022734493,
+  0.00943640833116,
+  0.0137777376066,
+  0.017059392038,
+  0.0213193035468,
+  0.0247343174676,
+  0.0280848773878,
+  0.0323308476564,
+  0.0370394341409,
+  0.0456917721191,
+  0.0558762890594,
+  0.0576956187107,
+  0.0625325287017,
+  0.0591603758776,
+  0.0656650815128,
+  0.0678329011676,
+  0.0625142146389,
+  0.0548068448797,
+  0.0503893295063,
+  0.040209818868,
+  0.0374446988111,
+  0.0299661572042,
+  0.0272024759921,
+  0.0219328403791,
+  0.0179586571619,
+  0.0142926728247,
+  0.00839941654725,
+  0.00522366397213,
+  0.00224457976761,
+  0.000779274977993,
+  0.000197066585944,
+  7.16031761328e-05,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  ]
+
+
+
+
+
+
 # From SimGeneral/MixingModule/python/mix_2015_25ns_FallMC_matchData_PoissonOOTPU_cfi.py
 probValue_76X= [
                 0.000108643,
@@ -107,15 +168,18 @@ probValue_74X = [ 4.8551E-07,
               4.8551E-08] 
 
 import os, sys, ROOT
-probFunctionVariable = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52]
+#probFunctionVariable = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52]
+
+probFunctionVariable = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49]
 
 hmc = ROOT.TH1D("pileup","MC pileup",50,0.,50)
-for ii in range(len(probValue_76X)):
-  print ii, " ", probFunctionVariable[ii]+1, " ", probValue_76X[ii]  
-  hmc.SetBinContent(probFunctionVariable[ii]+1, probValue_76X[ii]) 
+for ii in range(len(probValue_80X)):
+  print ii, " ", probFunctionVariable[ii]+1, " ", probValue_80X[ii]  
+  hmc.SetBinContent(probFunctionVariable[ii]+1, probValue_80X[ii]) 
  
 #fout = ROOT.TFile("PUDistMC_2015_25ns_Startup_PoissonOOTPU.root","RECREATE")
-fout = ROOT.TFile("PUDistMC_2015_25ns_FallMC_matchData_PoissonOOTPU.root","RECREATE")
+#fout = ROOT.TFile("PUDistMC_2015_25ns_FallMC_matchData_PoissonOOTPU.root","RECREATE")
+fout = ROOT.TFile("PUDistMC_2016_25ns_SpringMC_PUScenarioV1_PoissonOOTPU.root","RECREATE") 
 fout.cd()
 hmc.Write()
 fout.Close()

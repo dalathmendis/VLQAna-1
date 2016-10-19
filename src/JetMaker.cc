@@ -173,7 +173,6 @@ void JetMaker::operator()(edm::Event& evt, vlq::JetCollection& jets) {
   Handle <vector<float>>  h_jetGenJetEta      ; evt.getByToken (t_jetGenJetEta        , h_jetGenJetEta      );
   Handle <vector<float>>  h_jetGenJetPt       ; evt.getByToken (t_jetGenJetPt         , h_jetGenJetPt       );
   Handle <vector<float>>  h_jetGenJetPhi      ; evt.getByToken (t_jetGenJetPhi        , h_jetGenJetPhi      );
-
   if ((h_jetPt.product())->size() < 1) return ; 
 
   const int npv(*h_npv) ; 
@@ -194,7 +193,6 @@ void JetMaker::operator()(edm::Event& evt, vlq::JetCollection& jets) {
         (h_jetEnergy.product())->at(ijet) ) ;
 
     uncorrJetP4 = jetP4 * (h_jetJEC.product())->at(ijet) ; 
-
     double newJEC(1.0); 
     if ( newJECPayloadNames_.size() > 0 ) {
       ptr_newJEC_->setJetPt ( uncorrJetP4.Pt()     );
@@ -207,7 +205,7 @@ void JetMaker::operator()(edm::Event& evt, vlq::JetCollection& jets) {
       newJetP4 = uncorrJetP4*newJEC ; 
     }
     else newJetP4 = jetP4 ; 
-
+   
 #if DEBUGMORE
     cout 
       << " \nold jec = " << 1./(h_jetJEC.product())->at(ijet) 
@@ -233,7 +231,8 @@ void JetMaker::operator()(edm::Event& evt, vlq::JetCollection& jets) {
         ptsmear = rand->Gaus(pt_reco, sqrt(jerscalep4*jerscalep4 - 1)*0.2)/pt_reco ; //// Assuming 20% JER
         delete rand; 
       }
-      newJetP4 *= ptsmear ; 
+      newJetP4 *= ptsmear ;
+   
 #if DEBUG
       cout 
         << " \n pt reco             = " << pt_reco
@@ -254,7 +253,6 @@ void JetMaker::operator()(edm::Event& evt, vlq::JetCollection& jets) {
       unc = ptr_jecUnc->getUncertainty(true);
       newJetP4 *= (1 + jecShift_*unc) ; 
     }
-
 #if DEBUGMORE
     cout 
       << " \njet pt jecshift      = " << newJetP4.Pt() 
@@ -272,7 +270,6 @@ void JetMaker::operator()(edm::Event& evt, vlq::JetCollection& jets) {
         jetCSVDisc < idxjetCSVDiscMin_  ||
         jetCSVDisc >  idxjetCSVDiscMax_ 
        ) continue ; 
-
     TLorentzVector genJetP4;
     genJetP4.SetPtEtaPhiE((h_jetGenJetPt.product())->at(ijet), 
         (h_jetGenJetEta.product())->at(ijet),
@@ -281,7 +278,6 @@ void JetMaker::operator()(edm::Event& evt, vlq::JetCollection& jets) {
 
     //// Jet to put in the jet collection
     vlq::Jet jet ; 
-
     if ( type_ == AK8JET ) {
 
       double jettau1         (-1000); 
@@ -346,7 +342,6 @@ void JetMaker::operator()(edm::Event& evt, vlq::JetCollection& jets) {
         ptr_jecAK8_->setNPV   ( npv );
         massCorr = ptr_jecAK8_->getCorrection();
       }
-
       double masssmear(1.) ;
       if ( jerShift_ != 0 ) {
         double pt_gen = (h_jetGenJetPt.product())->at(ijet) ;  
@@ -356,7 +351,7 @@ void JetMaker::operator()(edm::Event& evt, vlq::JetCollection& jets) {
       }
 
       newJetP4.SetVectM(newJetP4.Vect(), newJetP4.Mag()*massCorr*masssmear) ; 
-
+      
 #if DEBUGMORE
       cout 
         << " \njet pt massCorrSmear = " << newJetP4.Pt() 
@@ -463,7 +458,6 @@ void JetMaker::operator()(edm::Event& evt, vlq::JetCollection& jets) {
       else {
         continue ; 
       }
-
     } //// if type_ == AK8JET
 
     jet.setP4           (newJetP4) ; 

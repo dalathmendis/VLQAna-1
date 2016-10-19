@@ -15,8 +15,8 @@ class ElectronMaker {
     ElectronMaker (edm::ParameterSet const&, edm::ConsumesCollector && iC) ; 
     ~ElectronMaker () ; 
     void operator () (edm::Event& evt, vlq::ElectronCollection& electrons) ; 
-   bool passElId(string WP, bool isEB, float dEtaIn, float dPhiIn, float full5x5siee, float HoE, float Iso, float D0, float Dz, float ooEmooP, bool conv, int missHits);
-    
+    //  bool passElId(string WP, bool isEB, float dEtaIn, float dPhiIn, float full5x5siee, float HoE, float Iso, float D0, float Dz, float ooEmooP, bool conv, int missHits);
+    bool passElId(string WP, bool isEB, float dPhiIn, float full5x5siee, float HoE, float Iso, float ooEmooP, int missHits,bool conv );
   private: 
    //double getEleSF(double pt, double eta);
     ELECTRONIDTYPES_t type_ ; 
