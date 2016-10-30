@@ -74,7 +74,9 @@ class OS2LAna : public edm::EDFilter {
     void fillAdditionalPlots( vlq::ElectronCollection goodElectrons,double evtwt);
     double GetDYNLOCorr(const double dileppt);
   double htCorr(double ht, double p0, double p1); 
-    // ----------member data ---------------------------
+  double htCorr(double ht, double p0, double p1, double p2, double p3);
+  
+  // ----------member data ---------------------------
     edm::EDGetTokenT<string>   t_evttype         ;
     edm::EDGetTokenT<double>   t_evtwtGen        ;
     edm::EDGetTokenT<double>   t_evtwtPV         ;
@@ -283,13 +285,17 @@ bool OS2LAna::filter(edm::Event& evt, const edm::EventSetup& iSetup) {
   if (*h_evttype.product() != "EvtType_Data"){
     double corr(1.);
     if (zdecayMode_ == "zmumu"){
-      if (ht <1000){
-	corr = htCorr(ht, 1.17876, -0.000576353);
+      if (ht <1200){
+	//corr = htCorr(ht, 1.17876, -0.000576353);//for norebin
+	corr = htCorr(ht, 1.39228, -0.00077193);//for rebin =4
+	//corr = htCorr(ht, 1.06501 , 0.000273571, -0.00000149895,0.000000000688488);
       }
-      else if (ht >= 1000){
-	corr = 0.602407;
+      else if (ht >= 1200){
+	//corr = 0.602407;//for no rebining
+	corr = 0.465964;//for rebin = 4
       }
     }
+    
     else if (zdecayMode_ == "zelel"){
       corr = htCorr(ht, 1.87977,  -0.000723582);
     }
@@ -455,6 +461,7 @@ bool OS2LAna::filter(edm::Event& evt, const edm::EventSetup& iSetup) {
       h1_["b_pt_z"+lep+lep] -> Fill(izll.getPt(), evtwt) ;
       h1_["b_st"] ->Fill(ST, evtwt);
     }
+    if (goodMet.at(0).getFullPt()<60){ h1_["nbjets_met_cnt"] -> Fill(goodBTaggedAK4Jets.size(), evtwt) ;}
   }
   
 
@@ -584,6 +591,7 @@ bool OS2LAna::filter(edm::Event& evt, const edm::EventSetup& iSetup) {
 
   // fill the b-tagging plots and efficiency maps
   h1_["nbjets"] -> Fill(goodBTaggedAK4Jets.size(), evtwt) ;
+  if (goodMet.at(0).getFullPt()<60){ h1_["nbjets_met_sig"] -> Fill(goodBTaggedAK4Jets.size(), evtwt) ;}
   h1_["ptbjetleading"] -> Fill(goodBTaggedAK4Jets.at(0).getPt(), evtwt) ;
   h1_["etabjetleading"] -> Fill(goodBTaggedAK4Jets.at(0).getEta(), evtwt) ;
 
@@ -809,6 +817,10 @@ void OS2LAna::beginJob() {
 
   //additional plots
   h1_["nbjets"] = sig.make<TH1D>("nbjets", ";N(b jets);;" , 11, -0.5,10.5) ; 
+  //addition nb plots
+  h1_["nbjets_met_sig"] = sig.make<TH1D>("nbjets_sig", ";N(b jets);;" , 11, -0.5,10.5) ;
+  h1_["nbjets_met_cnt"] = sig.make<TH1D>("nbjets_cnt", ";N(b jets);;" , 11, -0.5,10.5) ;
+
   h1_["ptbjetleading"]  = sig.make<TH1D>("ptbjetleading", ";p_{T}(leading b jet) [GeV];;" , 50, 0., 1000.) ; 
   h1_["etabjetleading"] = sig.make<TH1D>("etabjetleading", ";#eta(leading b jet);;" , 80 ,-4. ,4.) ;
 
@@ -903,6 +915,9 @@ double OS2LAna::htCorr(double ht, double p0, double p1){
   return(p1*ht + p0);
 }
 
+double OS2LAna::htCorr(double ht, double p0, double p1, double p2, double p3){
+  return((p3*ht*ht*ht) +(p2*ht*ht) +(p1*ht) + p0);
+}
 
 void OS2LAna::endJob() {
 
