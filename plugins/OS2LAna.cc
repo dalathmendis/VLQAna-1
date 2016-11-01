@@ -94,10 +94,12 @@ class OS2LAna : public edm::EDFilter {
     const std::string signalType_                ;
     const std::string zdecayMode_                ;
     const bool optimizeReco_                     ;
+    const bool doSkim_                           ;
     const double vlqMass_                        ;
     const double bosonMass_                      ;
     const bool applyLeptonSFs_                   ;
     const bool applyBTagSFs_                     ;
+    const bool applyHtCorr_                     ;
     const bool applyDYNLOCorr_                   ;
     const std::string fname_DYNLOCorr_           ; 
     const std::string funname_DYNLOCorr_         ; 
@@ -166,10 +168,12 @@ OS2LAna::OS2LAna(const edm::ParameterSet& iConfig) :
   signalType_             (iConfig.getParameter<std::string>       ("signalType")), 
   zdecayMode_             (iConfig.getParameter<std::string>       ("zdecayMode")),
   optimizeReco_           (iConfig.getParameter<bool>              ("optimizeReco")),
+  doSkim_                 (iConfig.getParameter<bool>              ("doSkim")),
   vlqMass_                (iConfig.getParameter<double>            ("vlqMass")),
   bosonMass_              (iConfig.getParameter<double>            ("bosonMass")),
   applyLeptonSFs_         (iConfig.getParameter<bool>              ("applyLeptonSFs")), 
   applyBTagSFs_           (iConfig.getParameter<bool>              ("applyBTagSFs")), 
+  applyHtCorr_            (iConfig.getParameter<bool>              ("applyHtCorr")),
   applyDYNLOCorr_         (iConfig.getParameter<bool>              ("applyDYNLOCorr")), 
   fname_DYNLOCorr_        (iConfig.getParameter<std::string>       ("File_DYNLOCorr")),
   funname_DYNLOCorr_      (iConfig.getParameter<std::string>       ("Fun_DYNLOCorr")),
@@ -216,8 +220,28 @@ bool OS2LAna::filter(edm::Event& evt, const edm::EventSetup& iSetup) {
   else edm::LogError("OS2LAna::filter") << " >>>> WrongleptonType: " << lep << " Check lep name !!!" ;
 
   if (filterSignal_) {
-    if (*h_evttype.product()!=signalType_) return false ;
-    else  h1_["signalEvts"] -> Fill(1) ;
+    if(doSkim_){
+      if( signalType_.empty()){
+        //cout << *h_evttype.product() << endl;                                                                                              
+        if      (*h_evttype.product() == "EvtType_MC_bZbZ"){h1_["signalEvts_all"] -> Fill(1);}
+        else if (*h_evttype.product() == "EvtType_MC_bZbH"){h1_["signalEvts_all"] -> Fill(2);}
+        else if (*h_evttype.product() == "EvtType_MC_bZtW"){h1_["signalEvts_all"] -> Fill(3);}
+        else if (*h_evttype.product() == "EvtType_MC_bHbH"){h1_["signalEvts_all"] -> Fill(4);}
+        else if (*h_evttype.product() == "EvtType_MC_bHtW"){h1_["signalEvts_all"] -> Fill(5);}
+        else if (*h_evttype.product() == "EvtType_MC_tWtW"){h1_["signalEvts_all"] -> Fill(6);}
+        else if (*h_evttype.product() == "EvtType_MC_tZtZ"){h1_["signalEvts_all"] -> Fill(7);}
+        else if (*h_evttype.product() == "EvtType_MC_tZtH"){h1_["signalEvts_all"] -> Fill(8);}
+        else if (*h_evttype.product() == "EvtType_MC_tZbW"){h1_["signalEvts_all"] -> Fill(9);}
+        else if (*h_evttype.product() == "EvtType_MC_tHtH"){h1_["signalEvts_all"] -> Fill(10);}
+        else if (*h_evttype.product() == "EvtType_MC_tHbW"){h1_["signalEvts_all"] -> Fill(11);}
+        else if (*h_evttype.product() == "EvtType_MC_bWbW"){h1_["signalEvts_all"] -> Fill(12);}
+      }
+      else{edm::LogError(">>>>ERROR>>>>OS2LAna >>>>  Please do not specify any signal type when skimming the signal" );}
+    }
+    else{
+      if (*h_evttype.product()!=signalType_) return false ;
+      else  h1_["signalEvts"] -> Fill(1) ;
+    }
   }
 
   const bool hltdecision(*h_hltdecision.product()) ; 
@@ -282,7 +306,8 @@ bool OS2LAna::filter(edm::Event& evt, const edm::EventSetup& iSetup) {
 
   HT htak4(goodAK4Jets) ; 
   double ht = htak4.getHT();
-  if (*h_evttype.product() != "EvtType_Data"){
+
+  if (applyHtCorr_ && *h_evttype.product() != "EvtType_Data"){
     double corr(1.);
     if (zdecayMode_ == "zmumu"){
       if (ht <1200){
@@ -326,6 +351,10 @@ bool OS2LAna::filter(edm::Event& evt, const edm::EventSetup& iSetup) {
   //at least 3 AK4 jets in event                                                                                                        
   if (goodAK4Jets.size() > 2 ) {h1_["cutflow"] -> Fill(4, evtwt) ;}
   else return false;
+
+  if (doSkim_){
+    return true;
+  }
 
 
   // at least HT > 200 in event
@@ -755,8 +784,19 @@ void OS2LAna::beginJob() {
 
   h1_["checkPU"] = fs->make<TH1D>("checkPU", "Initial NPV", 51, -0.5, 50.5);
 
+  if (filterSignal_){
+    if(doSkim_){
+      const int nCh = 12;
+      const char *channel[nCh] = {"bZbZ", "bZbH", "bZtW", "bHbH", "bHtW", "tWtW",
+                                  "tZtZ", "tZtH", "tZbW", "tHtH", "tHbW", "bWbW"};
+      h1_["signalEvts_all"] = fs->make<TH1D>("signalEvts_all", "All signal events", 12, 0.5, 12.5) ;
+      for (int i=1;i<=nCh;i++) h1_["signalEvts_all"]->GetXaxis()->SetBinLabel(i,channel[i-1]);
+    }
+    else{
+      h1_["signalEvts"] = fs->make<TH1D>("signalEvts", "signal events", 2, 0.5, 2.5) ;
+    }
+  }
 
-  if (filterSignal_){h1_["signalEvts"] = fs->make<TH1D>("signalEvts", "signalEvts", 2, 0.5, 2.5) ;}
   h1_["cutflow"] = fs->make<TH1D>("cutflow", "cut flow", 8, 0.5, 8.5) ;  
   h1_["cutflow"] -> GetXaxis() -> SetBinLabel(1, "Trig.+l^{+}l^{-}") ;
   h1_["cutflow"] -> GetXaxis() -> SetBinLabel(2, "75 #lt M(l^{+}l^{-}) #lt 105") ; 
@@ -769,6 +809,8 @@ void OS2LAna::beginJob() {
   h1_["cutflow"] -> GetXaxis() -> SetBinLabel(8, "S_{T} #geq 1000") ; 
   //h1_["cutflow"] -> GetXaxis() -> SetBinLabel(9, "N(AK8) #geq 1") ; //this is not the event cut
 
+
+  if (!doSkim_){
   TFileDirectory pre = fs->mkdir ("pre");
   TFileDirectory sig = fs->mkdir ("sig");
   TFileDirectory cnt = fs->mkdir ("cnt");
@@ -900,8 +942,8 @@ void OS2LAna::beginJob() {
 
 
 
+  }
 }
-
 double OS2LAna::GetDYNLOCorr(const double dileppt) {
 
   std::unique_ptr<TFile >file_DYNLOCorr = std::unique_ptr<TFile>(new TFile(fname_DYNLOCorr_.c_str())) ;
