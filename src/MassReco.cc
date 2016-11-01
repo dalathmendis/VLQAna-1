@@ -9,7 +9,7 @@ MassReco::~MassReco() {}
 TLorentzVector MassReco::getGen(GenParticleCollection genParts, int ID, int MomID){
 	TLorentzVector genInfo;
 	for (auto& gen : genParts){
-		if (gen.getPdgID() == ID && gen.getMom0PdgID() == MomID)
+	  if (gen.getPdgID() == ID && gen.getMom0PdgID() == MomID)
 			genInfo = gen.getP4();
 	}
 	return(genInfo);
@@ -19,18 +19,25 @@ TLorentzVector MassReco::getGen(GenParticleCollection genParts, int IDlow, int I
   TLorentzVector genInfo;
   for (auto& gen : genParts){
     if (gen.getPdgID() >= IDlow && gen.getPdgID() <= IDhigh && gen.getMom0PdgID() == MomID)
+     
       genInfo = gen.getP4();
+
   }
   return(genInfo);
 }
 
 TLorentzVector MassReco::getMatchedJet(TLorentzVector genPart, vlq::JetCollection goodJets, double dR){
-	TLorentzVector jetInfo;
-	for (auto& jet : goodJets){
-		if (genPart.DeltaR(jet.getP4()) < dR && genPart.Pt() > 0)
-			jetInfo = jet.getP4();
-	}
-	return(jetInfo);
+  TLorentzVector jetInfo;
+  for (auto& jet : goodJets){
+    if (genPart.DeltaR(jet.getP4()) < dR && genPart.Pt() > 0){
+      
+      jetInfo = jet.getP4();
+      
+    }
+    
+  }
+  return(jetInfo);
+  
 }
 
 // overload function to find all masses
@@ -46,6 +53,39 @@ double MassReco::findInvMass(TLorentzVector gen1, TLorentzVector gen2, TLorentzV
 		genSum = (gen1 + gen2 + b).M();
 	return(genSum);
 }
+
+
+double MassReco::findInvMass(TLorentzVector gen1){
+  double genSum = -999;
+  if (gen1.M() != 0 && gen1.Pt() > 0)
+    genSum = gen1.M();
+  return(genSum);
+}
+
+
+
+double MassReco::findPt(TLorentzVector gen1){
+
+  double genpt = -999;
+  if (gen1.Pt()>0)
+    genpt = gen1.Pt();
+  return(genpt);
+}
+
+double MassReco::findPt(TLorentzVector gen1, TLorentzVector gen2){
+  double genpt = -999;
+  if (gen1 != gen2 && (gen1 + gen2).M() != 0 && gen1.Pt() > 0 && gen2.Pt() > 0)
+
+    genpt = (gen1 + gen2).Pt();
+  return(genpt);
+}
+double MassReco::findPt(TLorentzVector gen1, TLorentzVector gen2, TLorentzVector b){
+  double genpt = -999;
+  if (gen1 != gen2 && (gen1 + gen2).M() != 0 && b.Pt() > 0 && gen1.Pt() > 0 && gen2.Pt() > 0)
+    genpt = (gen1 + gen2 + b).Pt();
+  return(genpt);
+}
+
 
 pair<double, double> MassReco::doReco(vlq::JetCollection ak4Jets, TLorentzVector fatJet, double bosMass, TLorentzVector Leptons){
   pair<double, double> chi2_result;

@@ -18,6 +18,12 @@ class CandidateCleaner {
         }
       }
 
+
+
+
+
+
+
   private:
     double dr_;
 }; 

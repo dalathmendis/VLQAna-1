@@ -313,7 +313,7 @@ bool EventCleaner::filter(edm::Event& evt, const edm::EventSetup& iSetup) {
     if ( vlqBbZ.size() == 1 && vlqBtW.size() == 1 ) evttype = "EvtType_MC_bZtW" ; 
     if ( vlqBbH.size() == 1 && vlqBtW.size() == 1 ) evttype = "EvtType_MC_bHtW" ; 
   }
-
+  //  cout << " Evt type = " << evttype <<endl;
   auto_ptr<int>ptr_evtno(new int(evtno)); 
   auto_ptr<int>ptr_lumisec(new int(lumisec)); 
   auto_ptr<int>ptr_runno(new int(runno)); 
