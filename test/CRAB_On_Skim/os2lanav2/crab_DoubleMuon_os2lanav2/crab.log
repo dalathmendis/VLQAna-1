@@ -1,0 +1,268 @@
+Singletons:
+  FileNames           : FileNames_QCD_HT1000to1500
+                      - Name of list of input files
+  applyBTagSFs        : False
+                      - Apply b-tagging SFs to the MC
+  applyDYNLOCorr      : False
+                      - Apply DY EWK k-factor to DY MC
+  applyHtCorr         : False
+                      - applyig ht correction
+  applyLeptonSFs      : False
+                      - Apply lepton SFs to the MC
+  doPUReweightingOfficial: False
+                      - Do pileup reweighting using official recipe
+  doSkim              : True
+                      - Produce skim 1 or 0
+  filePrepend         : 
+                      - String to prepend location of all files
+  filterSignal        : 
+                      - Select only tZtt or bZbZ modes
+  isData              : True
+                      - Is data?
+  lepID               : TIGHT
+                      - lepton ID? Choose: 'TIGHT' or 'LOOSE'
+  maxEvents           : -1
+                      - Number of events to process (-1 for all)
+  optimizeReco        : False
+                      - Optimize mass reconstruction
+  outFileName         : os2lanabw.root
+                      - Output file name
+  outputFile          : output.root
+                      - Name of output file (if needed)
+  secondaryOutputFile : 
+                      - Name of second output file (if needed)
+  section             : 0
+                      - This section (from 1..totalSections inclusive)
+  signalType          : 
+                      - Select one of EvtType_MC_tZtZ, EvtType_MC_tZtH, EvtType_MC_tZbW, EvtType_MC_tHtH, EvtType_MC_tHbW, EvtType_MC_bWbW, EvtType_MC_bZbZ, EvtType_MC_bZbH, EvtType_MC_bZtW, EvtType_MC_bHbH, EvtType_MC_bHtW, EvtType_MC_tWtW
+  tag                 : 
+                      - tag to add to output filename
+  totalSections       : 0
+                      - Total number of sections
+  zdecaymode          : zmumu
+                      - Z->mumu or Z->elel? Choose: 'zmumu' or 'zelel'
+Lists:
+  inputFiles          : []
+                      - Files to process
+  secondaryInputFiles : []
+                      - Second group of files to process (if needed)
+
+DEBUG 2016-11-03 07:43:07,873: 	 Executing command: 'submit'
+DEBUG 2016-11-03 07:43:07,874: 	 Found CRAB cache file /uscms/home/dmendis/.crab3
+DEBUG 2016-11-03 07:43:07,882: 	 Checking credentials
+DEBUG 2016-11-03 07:43:07,882: 	 Found proxy file /tmp/x509up_u50533
+DEBUG 2016-11-03 07:43:07,882: 	 Getting proxy life time left
+DEBUG 2016-11-03 07:43:07,985: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -timeleft
+ output : 604573
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-03 07:43:08,088: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -actimeleft
+ output : 604572
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-03 07:43:08,089: 	 Proxy valid for 167:56:13 hours
+INFO 2016-11-03 07:43:08,089: 	 Will use CRAB configuration file Zmumu/crab_DoubleMuon_os2lanav2.py
+DEBUG 2016-11-03 07:43:08,089: 	 Loading CRAB configuration file.
+DEBUG 2016-11-03 07:43:08,093: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+DEBUG 2016-11-03 07:43:08,206: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=dmendis/CN=766225/CN=Dalath Mendis
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-03 07:43:08,207: 	 Checking credentials
+DEBUG 2016-11-03 07:43:08,207: 	 Found proxy file /tmp/x509up_u50533
+DEBUG 2016-11-03 07:43:08,207: 	 Getting proxy life time left
+DEBUG 2016-11-03 07:43:08,310: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -timeleft
+ output : 604572
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-03 07:43:08,413: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -actimeleft
+ output : 604572
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-03 07:43:08,414: 	 Proxy valid for 167:56:12 hours
+DEBUG 2016-11-03 07:43:08,517: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u50533 voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-03 07:43:09,665: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+DEBUG 2016-11-03 07:43:09,772: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=dmendis/CN=766225/CN=Dalath Mendis
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-03 07:43:09,772: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2016-11-03 07:43:09,773: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=dmendis/CN=766225/CN=Dalath Mendis_cmsweb.cern.ch for credential name
+DEBUG 2016-11-03 07:43:10,777: 	 Executing : 
+ command : myproxy-info -l bdbfda7e6a0d8a9203475967dd6d849f7df75970 -s myproxy.cern.ch
+ output : username: bdbfda7e6a0d8a9203475967dd6d849f7df75970
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=dmendis/CN=766225/CN=Dalath Mendis
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  timeleft: 543:39:31  (22.7 days)
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-03 07:43:10,779: 	 Myproxy is valid: 1957171
+DEBUG 2016-11-03 07:43:10,779: 	 Command use: submit
+DEBUG 2016-11-03 07:43:10,779: 	 Options use: ['-c', 'Zmumu/crab_DoubleMuon_os2lanav2.py']
+DEBUG 2016-11-03 07:43:11,894: 	 CRABClient version: 3.3.1608
+DEBUG 2016-11-03 07:43:11,895: 	 Instance is prod
+DEBUG 2016-11-03 07:43:11,895: 	 Server base url is cmsweb.cern.ch
+DEBUG 2016-11-03 07:43:11,895: 	 Command url /crabserver/prod/workflow
+DEBUG 2016-11-03 07:43:11,895: 	 Started submission
+DEBUG 2016-11-03 07:43:11,895: 	 Working on /uscms_data/d3/dmendis/80x/CMSSW_8_0_15/src/Analysis/VLQAna/test/CRAB_On_Skim/os2lanav2/crab_DoubleMuon_os2lanav2
+DEBUG 2016-11-03 07:43:13,108: 	 Loading required information from the environment
+DEBUG 2016-11-03 07:43:13,108: 	 Found CMSSW_8_0_15 for slc6_amd64_gcc530 with base /uscms_data/d3/dmendis/80x/CMSSW_8_0_15
+DEBUG 2016-11-03 07:43:13,122: 	 UNIQUE NAME: tarUUID 9549d0b9-16ef-4b61-a1f7-dd74942c9b00 
+DEBUG 2016-11-03 07:43:13,122: 	 self.config: from WMCore.Configuration import Configuration
+config = Configuration()
+config.section_('General')
+config.General.transferLogs = True
+config.General.workArea = 'os2lanav2'
+config.General.requestName = 'DoubleMuon_os2lanav2'
+config.section_('JobType')
+config.JobType.psetName = 'os2lana_cfg.py'
+config.JobType.pluginName = 'Analysis'
+config.JobType.inputFiles = ['2016_25ns_Spring_PUXsec65740nb50.root', 'PUDistMC_2016_25ns_SpringMC_PUScenarioV1_PoissonOOTPU.root', 'scalefactors_v4.root', '2016_25ns_Spring_PUXsec69200nb50.root', 'Spring16_25nsV6_MC_L2Relative_AK8PFchs.txt', '2016_25ns_Spring_PUXsec72660nb50.root', 'Spring16_25nsV6_MC_L3Absolute_AK8PFchs.txt', 'CSVv2_ichep.csv', 'Spring16_25nsV6_MC_Uncertainty_AK4PFchs.txt', 'Spring16_25nsV6_MC_Uncertainty_AK8PFchs.txt']
+config.JobType.pyCfgParams = ['isData=True', 'zdecaymode=zmumu', 'doPUReweightingOfficial=False', 'applyLeptonSFs=False', 'applyBTagSFs=False', 'applyDYNLOCorr=False', 'optimizeReco=False', 'doSkim=True']
+config.section_('Data')
+config.Data.inputDataset = '/DoubleMuon/skhi-RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0-642b48c1c707cb5cfa93fc168fde448b/USER'
+config.Data.publication = False
+config.Data.unitsPerJob = 1
+config.Data.ignoreLocality = False
+config.Data.inputDBS = 'phys03'
+config.Data.splitting = 'LumiBased'
+config.Data.outLFNDirBase = '/store/group/lpcbprime/noreplica/dmendis/CrabonSkim/Zmumu'
+config.section_('Site')
+config.Site.storageSite = 'T3_US_FNALLPC'
+config.section_('User')
+
+DEBUG 2016-11-03 07:43:13,122: 	 self.config.JobType.psetName: os2lana_cfg.py
+INFO 2016-11-03 07:43:13,123: 	 Importing CMSSW configuration os2lana_cfg.py
+DEBUG 2016-11-03 07:43:13,123: 	 Additional parameters for the CMSSW configuration are: ['isData=True', 'zdecaymode=zmumu', 'doPUReweightingOfficial=False', 'applyLeptonSFs=False', 'applyBTagSFs=False', 'applyDYNLOCorr=False', 'optimizeReco=False', 'doSkim=True']
+INFO 2016-11-03 07:43:13,528: 	 Finished importing CMSSW configuration os2lana_cfg.py
+DEBUG 2016-11-03 07:43:13,529: 	 Writing CMSSW configuration to /uscms_data/d3/dmendis/80x/CMSSW_8_0_15/src/Analysis/VLQAna/test/CRAB_On_Skim/os2lanav2/crab_DoubleMuon_os2lanav2/inputs/PSet.py
+DEBUG 2016-11-03 07:43:13,723: 	 The following EDM output files will be collected: ['os2lanabw_skim.root']
+DEBUG 2016-11-03 07:43:13,723: 	 The following TFile output files will be collected: ['os2lanabw.root']
+DEBUG 2016-11-03 07:43:13,723: 	 The following user output files will be collected: []
+DEBUG 2016-11-03 07:43:13,723: 	 Loading required information from the environment
+DEBUG 2016-11-03 07:43:13,723: 	 Found CMSSW_8_0_15 for slc6_amd64_gcc530 with base /uscms_data/d3/dmendis/80x/CMSSW_8_0_15
+DEBUG 2016-11-03 07:43:13,723: 	 Making tarball in /uscms_data/d3/dmendis/80x/CMSSW_8_0_15/src/Analysis/VLQAna/test/CRAB_On_Skim/os2lanav2/crab_DoubleMuon_os2lanav2/inputs/9549d0b9-16ef-4b61-a1f7-dd74942c9b00default.tgz
+DEBUG 2016-11-03 07:43:13,805: 	 Checking directory /uscms_data/d3/dmendis/80x/CMSSW_8_0_15/lib
+DEBUG 2016-11-03 07:43:13,805: 	 Adding directory /uscms_data/d3/dmendis/80x/CMSSW_8_0_15/lib to tarball
+DEBUG 2016-11-03 07:43:14,271: 	 Checking directory /uscms_data/d3/dmendis/80x/CMSSW_8_0_15/biglib
+DEBUG 2016-11-03 07:43:14,271: 	 Adding directory /uscms_data/d3/dmendis/80x/CMSSW_8_0_15/biglib to tarball
+DEBUG 2016-11-03 07:43:14,273: 	 Checking directory /uscms_data/d3/dmendis/80x/CMSSW_8_0_15/module
+DEBUG 2016-11-03 07:43:34,676: 	 Adding data directory /uscms_data/d3/dmendis/80x/CMSSW_8_0_15/src/AnalysisDataFormats/BoostedObjects/interface to tarball
+DEBUG 2016-11-03 07:43:37,204: 	 Adding data directory /uscms_data/d3/dmendis/80x/CMSSW_8_0_15/src/Analysis/VLQAna/interface to tarball
+DEBUG 2016-11-03 08:31:55,361: 	 Adding file 2016_25ns_Spring_PUXsec65740nb50.root to tarball
+DEBUG 2016-11-03 08:31:55,438: 	 Adding file PUDistMC_2016_25ns_SpringMC_PUScenarioV1_PoissonOOTPU.root to tarball
+DEBUG 2016-11-03 08:31:55,518: 	 Adding file scalefactors_v4.root to tarball
+DEBUG 2016-11-03 08:31:55,650: 	 Adding file 2016_25ns_Spring_PUXsec69200nb50.root to tarball
+DEBUG 2016-11-03 08:31:55,674: 	 Adding file Spring16_25nsV6_MC_L2Relative_AK8PFchs.txt to tarball
+DEBUG 2016-11-03 08:31:55,707: 	 Adding file 2016_25ns_Spring_PUXsec72660nb50.root to tarball
+DEBUG 2016-11-03 08:31:55,735: 	 Adding file Spring16_25nsV6_MC_L3Absolute_AK8PFchs.txt to tarball
+DEBUG 2016-11-03 08:31:55,755: 	 Adding file CSVv2_ichep.csv to tarball
+DEBUG 2016-11-03 08:31:55,811: 	 Adding file Spring16_25nsV6_MC_Uncertainty_AK4PFchs.txt to tarball
+DEBUG 2016-11-03 08:31:55,859: 	 Adding file Spring16_25nsV6_MC_Uncertainty_AK8PFchs.txt to tarball
+DEBUG 2016-11-03 08:31:55,945: 	 Uploading archive /uscms_data/d3/dmendis/80x/CMSSW_8_0_15/src/Analysis/VLQAna/test/CRAB_On_Skim/os2lanav2/crab_DoubleMuon_os2lanav2/inputs/9549d0b9-16ef-4b61-a1f7-dd74942c9b00default.tgz to the CRAB cache. Using URI https://cmsweb.cern.ch/crabcache
+DEBUG 2016-11-03 08:31:58,911: 	 Loading required information from the environment
+DEBUG 2016-11-03 08:31:58,911: 	 Found CMSSW_8_0_15 for slc6_amd64_gcc530 with base /uscms_data/d3/dmendis/80x/CMSSW_8_0_15
+DEBUG 2016-11-03 08:31:58,911: 	 Making tarball in /uscms_data/d3/dmendis/80x/CMSSW_8_0_15/src/Analysis/VLQAna/test/CRAB_On_Skim/os2lanav2/crab_DoubleMuon_os2lanav2/inputs/debugFiles.tgz
+DEBUG 2016-11-03 08:31:58,944: 	 Uploading archive /uscms_data/d3/dmendis/80x/CMSSW_8_0_15/src/Analysis/VLQAna/test/CRAB_On_Skim/os2lanav2/crab_DoubleMuon_os2lanav2/inputs/debugFiles.tgz to the CRAB cache. Using URI https://cmsweb.cern.ch/crabcache
+DEBUG 2016-11-03 08:32:00,269: 	 Result uploading input files: 985d51ed66399789dcca98ef7a8d36ae6b62983e0253ce5ca2d133c5df84dfc7.tar.gz 
+INFO 2016-11-03 08:32:00,269: 	 Sending the request to the server
+DEBUG 2016-11-03 08:32:00,269: 	 Submitting {'maxjobruntime': 1250, 'extrajdl': [], 'ignorelocality': 0, 'savelogsflag': 1, 'useparent': 0, 'asyncdest': 'T3_US_FNALLPC', 'algoargs': 1, 'cachefilename': '985d51ed66399789dcca98ef7a8d36ae6b62983e0253ce5ca2d133c5df84dfc7.tar.gz', 'numcores': 1, 'addoutputfiles': [], 'generator': 'pythia', 'maxmemory': 2000, 'publishdbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'priority': 10, 'jobsw': 'CMSSW_8_0_15', 'edmoutfiles': ['os2lanabw_skim.root'], 'userfiles': [], 'primarydataset': '', 'inputdata': '/DoubleMuon/skhi-RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0-642b48c1c707cb5cfa93fc168fde448b/USER', 'lfn': '/store/group/lpcbprime/noreplica/dmendis/CrabonSkim/Zmumu', 'dryrun': 0, 'workflow': 'crab_DoubleMuon_os2lanav2', 'adduserfiles': ['2016_25ns_Spring_PUXsec65740nb50.root', 'PUDistMC_2016_25ns_SpringMC_PUScenarioV1_PoissonOOTPU.root', 'scalefactors_v4.root', '2016_25ns_Spring_PUXsec69200nb50.root', 'Spring16_25nsV6_MC_L2Relative_AK8PFchs.txt', '2016_25ns_Spring_PUXsec72660nb50.root', 'Spring16_25nsV6_MC_L3Absolute_AK8PFchs.txt', 'CSVv2_ichep.csv', 'Spring16_25nsV6_MC_Uncertainty_AK4PFchs.txt', 'Spring16_25nsV6_MC_Uncertainty_AK8PFchs.txt'], 'nonprodsw': 0, 'tfileoutfiles': ['os2lanabw.root'], 'oneEventMode': 0, 'debugfilename': 'c73a7c0541f8586e9db015c636acdca298cfbe2cc2c9db4d7f11bcf6b93f6753.tar.gz', 'cacheurl': 'https://cmsweb.cern.ch/crabcache', 'saveoutput': 1, 'publication': 0, 'jobarch': 'slc6_amd64_gcc530', 'totalunits': 0, 'splitalgo': 'LumiBased', 'nonvaliddata': 0, 'dbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSReader', 'publishgroupname': 0, 'jobtype': 'Analysis', 'publishname2': ''} 
+DEBUG 2016-11-03 08:32:00,270: 	 Encoded submit request: maxjobruntime=1250&ignorelocality=0&savelogsflag=1&useparent=0&asyncdest=T3_US_FNALLPC&algoargs=1&cachefilename=985d51ed66399789dcca98ef7a8d36ae6b62983e0253ce5ca2d133c5df84dfc7.tar.gz&numcores=1&generator=pythia&maxmemory=2000&publishdbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSWriter&priority=10&jobsw=CMSSW_8_0_15&primarydataset=&inputdata=%2FDoubleMuon%2Fskhi-RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0-642b48c1c707cb5cfa93fc168fde448b%2FUSER&lfn=%2Fstore%2Fgroup%2Flpcbprime%2Fnoreplica%2Fdmendis%2FCrabonSkim%2FZmumu&dryrun=0&workflow=crab_DoubleMuon_os2lanav2&nonprodsw=0&oneEventMode=0&debugfilename=c73a7c0541f8586e9db015c636acdca298cfbe2cc2c9db4d7f11bcf6b93f6753.tar.gz&cacheurl=https%3A%2F%2Fcmsweb.cern.ch%2Fcrabcache&saveoutput=1&publication=0&jobarch=slc6_amd64_gcc530&totalunits=0&splitalgo=LumiBased&nonvaliddata=0&dbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSReader&publishgroupname=0&jobtype=Analysis&publishname2=&adduserfiles=2016_25ns_Spring_PUXsec65740nb50.root&adduserfiles=PUDistMC_2016_25ns_SpringMC_PUScenarioV1_PoissonOOTPU.root&adduserfiles=scalefactors_v4.root&adduserfiles=2016_25ns_Spring_PUXsec69200nb50.root&adduserfiles=Spring16_25nsV6_MC_L2Relative_AK8PFchs.txt&adduserfiles=2016_25ns_Spring_PUXsec72660nb50.root&adduserfiles=Spring16_25nsV6_MC_L3Absolute_AK8PFchs.txt&adduserfiles=CSVv2_ichep.csv&adduserfiles=Spring16_25nsV6_MC_Uncertainty_AK4PFchs.txt&adduserfiles=Spring16_25nsV6_MC_Uncertainty_AK8PFchs.txt&tfileoutfiles=os2lanabw.root&edmoutfiles=os2lanabw_skim.root
+DEBUG 2016-11-03 08:32:01,814: 	 Result: {'result': [{'RequestName': '161103_133201:dmendis_crab_DoubleMuon_os2lanav2'}]}
+INFO 2016-11-03 08:32:01,816: 	 Success: Your task has been delivered to the CRAB3 server.
+INFO 2016-11-03 08:32:01,816: 	 Task name: 161103_133201:dmendis_crab_DoubleMuon_os2lanav2
+INFO 2016-11-03 08:32:01,816: 	 Please use 'crab status' to check how the submission process proceeds.
+DEBUG 2016-11-03 08:32:01,816: 	 About to return
+INFO 2016-11-03 08:32:01,822: 	 Log file is /uscms_data/d3/dmendis/80x/CMSSW_8_0_15/src/Analysis/VLQAna/test/CRAB_On_Skim/os2lanav2/crab_DoubleMuon_os2lanav2/crab.log
+DEBUG 2016-11-03 15:16:56,240: 	 Executing command: 'status'
+DEBUG 2016-11-03 15:16:56,240: 	 Found CRAB cache file /uscms/home/dmendis/.crab3
+DEBUG 2016-11-03 15:16:56,249: 	 Checking credentials
+DEBUG 2016-11-03 15:16:56,249: 	 Found proxy file /tmp/x509up_u50533
+DEBUG 2016-11-03 15:16:56,249: 	 Getting proxy life time left
+DEBUG 2016-11-03 15:16:56,352: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -timeleft
+ output : 604600
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-03 15:16:56,455: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -actimeleft
+ output : 604600
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-03 15:16:56,456: 	 Proxy valid for 167:56:40 hours
+DEBUG 2016-11-03 15:16:56,585: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=dmendis/CN=766225/CN=Dalath Mendis
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-03 15:16:56,586: 	 Checking credentials
+DEBUG 2016-11-03 15:16:56,586: 	 Found proxy file /tmp/x509up_u50533
+DEBUG 2016-11-03 15:16:56,586: 	 Getting proxy life time left
+DEBUG 2016-11-03 15:16:56,689: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -timeleft
+ output : 604600
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-03 15:16:56,792: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -actimeleft
+ output : 604600
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-03 15:16:56,792: 	 Proxy valid for 167:56:40 hours
+DEBUG 2016-11-03 15:16:57,948: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+DEBUG 2016-11-03 15:16:58,056: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=dmendis/CN=766225/CN=Dalath Mendis
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-03 15:16:58,056: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2016-11-03 15:16:58,056: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=dmendis/CN=766225/CN=Dalath Mendis_cmsweb.cern.ch for credential name
+DEBUG 2016-11-03 15:16:59,161: 	 Executing : 
+ command : myproxy-info -l bdbfda7e6a0d8a9203475967dd6d849f7df75970 -s myproxy.cern.ch
+ output : username: bdbfda7e6a0d8a9203475967dd6d849f7df75970
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=dmendis/CN=766225/CN=Dalath Mendis
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  timeleft: 536:05:42  (22.3 days)
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-03 15:16:59,162: 	 Myproxy is valid: 1929942
+DEBUG 2016-11-03 15:16:59,163: 	 Command use: status
+DEBUG 2016-11-03 15:16:59,163: 	 Options use: ['-d', 'os2lanav2/crab_DoubleMuon_os2lanav2/']
+DEBUG 2016-11-03 15:17:00,283: 	 CRABClient version: 3.3.1608
+DEBUG 2016-11-03 15:17:00,283: 	 Instance is prod
+DEBUG 2016-11-03 15:17:00,283: 	 Server base url is cmsweb.cern.ch
+DEBUG 2016-11-03 15:17:00,283: 	 Command url /crabserver/prod/workflow
+DEBUG 2016-11-03 15:17:00,283: 	 Looking up detailed status of task 161103_133201:dmendis_crab_DoubleMuon_os2lanav2
+DEBUG 2016-11-03 15:17:01,464: 	 {'status': 'SUBMITFAILED', 'username': 'dmendis', 'totalJobdefs': 0, 'jobsPerStatus': {}, 'taskWarningMsg': [], 'schedd': '', 'statusFailureMsg': '', 'taskFailureMsg': 'The splitting on your task generated 98646 jobs. The maximum number of jobs in each task is 10000', 'failedJobdefs': 0, 'command': 'SUBMIT', 'submissionTime': 1478179921, 'jobdefErrors': [], 'collector': 'cmsgwms-collector-global.cern.ch,cmssrv221.fnal.gov', 'jobList': []}
+INFO 2016-11-03 15:17:01,464: 	 CRAB project directory:		/uscms_data/d3/dmendis/80x/CMSSW_8_0_15/src/Analysis/VLQAna/test/CRAB_On_Skim/os2lanav2/crab_DoubleMuon_os2lanav2
+INFO 2016-11-03 15:17:01,464: 	 Task name:			161103_133201:dmendis_crab_DoubleMuon_os2lanav2
+INFO 2016-11-03 15:17:01,464: 	 Task status:			SUBMITFAILED
+ERROR 2016-11-03 15:17:01,464: 	 Failure message:		The splitting on your task generated 98646 jobs. The maximum number of jobs in each task is 10000
+INFO 2016-11-03 15:17:01,467: 	 Log file is /uscms_data/d3/dmendis/80x/CMSSW_8_0_15/src/Analysis/VLQAna/test/CRAB_On_Skim/os2lanav2/crab_DoubleMuon_os2lanav2/crab.log

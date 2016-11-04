@@ -18,7 +18,7 @@ options.register('lepID', 'TIGHT',
     VarParsing.varType.string,
     "lepton ID? Choose: 'TIGHT' or 'LOOSE'"
     )
-options.register('outFileName', 'os2lana.root',
+options.register('outFileName', 'os2lanady.root',
     VarParsing.multiplicity.singleton,
     VarParsing.varType.string,
     "Output file name"
@@ -28,7 +28,7 @@ options.register('doPUReweightingOfficial', True,
     VarParsing.varType.bool,
     "Do pileup reweighting using official recipe"
     )
-options.register('filterSignal', False,
+options.register('filterSignal',False ,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
     "Select only tZtt or bZbZ modes"
@@ -43,12 +43,12 @@ options.register('applyLeptonSFs', True,
     VarParsing.varType.bool,
     "Apply lepton SFs to the MC"
     )
-options.register('applyBTagSFs', True,
+options.register('applyBTagSFs', False,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
     "Apply b-tagging SFs to the MC"
     )
-options.register('applyDYNLOCorr', True, ### Set to true only for DY process ### Only EWK NLO k-factor is applied
+options.register('applyDYNLOCorr', False, ### Set to true only for DY process ### Only EWK NLO k-factor is applied
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
     "Apply DY EWK k-factor to DY MC"
@@ -58,20 +58,20 @@ options.register('FileNames', 'FileNames_QCD_HT1000to1500',
     VarParsing.varType.string,
     "Name of list of input files"
     )
-options.register('optimizeReco', True,
+options.register('optimizeReco', False,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
     "Optimize mass reconstruction"
     )
 
-options.register('applyHtCorr', True,
+options.register('applyHtCorr', False,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
     "applyig ht correction"
     )
 
 
-options.register('doSkim', False,
+options.register('doSkim', True,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
     "Produce skim 1 or 0"
@@ -122,18 +122,23 @@ process.source = cms.Source(
    # 'root://cms-xrd-global.cern.ch//store/group/phys_b2g/skhi/B2GAnaFW_80X_V2p0_RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/DoubleEG/RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/160914_162605/0001/B2GEDMNtuple_1345.root',
 #'root://cms-xrd-global.cern.ch//store/group/phys_b2g/skhi/B2GAnaFW_80X_V2p0_RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/DoubleMuon/RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/160914_162636/0000/B2GEDMNtuple_230.root',
 
-    'root://cms-xrd-global.cern.ch//store/group/phys_b2g/B2GAnaFW_80X_V2p0/DYJetsToLL_M-50_HT-400to600_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0_1/160830_162627/0000/B2GEDMNtuple_1.root',
+#    'root://eoscms.cern.ch//store/group/phys_b2g/B2GAnaFW_80X_V2p0/DYJetsToLL_M-50_HT-400to600_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0_1/160830_162627/0000/B2GEDMNtuple_1.root',
+
+
+#'root://cmsxrootd.fnal.gov//store/group/phys_b2g/B2GAnaFW_80X_V2p0/DYJetsToLL_M-50_HT-400to600_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0_1/160830_162627/0000/B2GEDMNtuple_1.root',
 
 #'root://cms-xrd-global.cern.ch//store/group/phys_b2g/skhi/B2GAnaFW_80X_V2p0_RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/DoubleMuon/RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/160914_163007/0005/B2GEDMNtuple_5946.root',
+    #'file:os2lana_skim.root',
 
+    #'root://cms-xrd-global.cern.ch//store/group/lpctlbsm/B2GAnaFW_80X_V2p0/TT_TuneCUETP8M1_13TeV-powheg-pythia8/RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/160722_192944/0000/B2GEDMNtuple_1.root',
 
-#    'root://cms-xrd-global.cern.ch//store/group/phys_b2g/B2GAnaFW_80X_V2p0/DYJetsToLL_M-50_HT-100to200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0/160825_160530/0000/B2GEDMNtuple_1.root',
+    'root://cms-xrd-global.cern.ch//store/group/phys_b2g/B2GAnaFW_80X_V2p0/DYJetsToLL_M-50_HT-100to200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0/160825_160530/0000/B2GEDMNtuple_1.root',
 #'root://cms-xrd-global.cern.ch//store/group/phys_b2g/B2GAnaFW_80X_V2p0/DYJetsToLL_M-50_HT-1200to2500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0/160825_162354/0000/B2GEDMNtuple_13.root',
 #'root://eoscms.cern.ch//store/group/phys_b2g/B2GAnaFW_80X_V2p0/DYJetsToLL_M-50_HT-1200to2500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0/160825_162354/0000/B2GEDMNtuple_13.root',
-#'root://eoscms.cern.ch//store/group/phys_b2g/B2GAnaFW_80X_V2p0/TprimeTprime_M-800_TuneCUETP8M1_13TeV-madgraph-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0/160811_185354/0000/B2GEDMNtuple_1.root',
+#    'root://eoscms.cern.ch//store/group/phys_b2g/B2GAnaFW_80X_V2p0/TprimeTprime_M-800_TuneCUETP8M1_13TeV-madgraph-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0/160811_185354/0000/B2GEDMNtuple_1.root',
 
-#'root://eoscms.cern.ch//store/group/phys_b2g/skhi/B2GAnaFW_80X_V2p0_RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/DoubleMuon/RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/160914_162636/0000/B2GEDMNtuple_230.root',   
-#'root://cms-xrd-global.cern.ch//store/group/phys_b2g/B2GAnaFW_80X_V2p0/TprimeTprime_M-800_TuneCUETP8M1_13TeV-madgraph-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0/160811_185354/0000/B2GEDMNtuple_1.root',
+    #'root://eoscms.cern.ch//store/group/phys_b2g/skhi/B2GAnaFW_80X_V2p0_RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/DoubleMuon/RunIISpring16MiniAODv2_B2GAnaFW_80x_V2p0/160914_162636/0000/B2GEDMNtuple_1.root',   
+    #'root://cms-xrd-global.cern.ch//store/group/phys_b2g/B2GAnaFW_80X_V2p0/TprimeTprime_M-800_TuneCUETP8M1_13TeV-madgraph-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0/160811_185354/0000/B2GEDMNtuple_1.root',
 
    # 'root://eoscms.cern.ch//store/group/phys_b2g/B2GAnaFW_80X_V2p0/TprimeTprime_M-800_TuneCUETP8M1_13TeV-madgraph-pythia8/B2GAnaFW_RunIISpring16MiniAODv2_25ns_v80x_v2p0/160811_185354/0000/B2GEDMNtuple_1.root',
 
@@ -193,9 +198,9 @@ process.TFileService = cms.Service("TFileService",
        )
 
 
-#outCommand = ['keep *', 'drop *_evtcleaner_*_*', 'drop *_photons_*_*', 'drop *_photonjets_*_*', 'drop *_TriggerResults_*_*']          
+outCommand = ['keep *', 'drop *_evtcleaner_*_*', 'drop *_photons_*_*', 'drop *_photonjets_*_*', 'drop *_TriggerResults_*_*']          
 
-outCommand = ['keep *', 'drop *_evtcleaner_*_*', 'drop *_photons_*_*', 'drop *_photonjets_*_*', 'drop *_*Puppi_*_*', 'drop *_TriggerResults_*_*']
+#outCommand = ['keep *', 'drop *_evtcleaner_*_*', 'drop *_photons_*_*', 'drop *_photonjets_*_*', 'drop *_*Puppi_*_*', 'drop *_TriggerResults_*_*']
 
 process.out = cms.OutputModule("PoolOutputModule",
     fileName = cms.untracked.string(options.outFileName.split('.',1)[0]+'_skim.root'),
@@ -216,9 +221,10 @@ process.load("Analysis.VLQAna.VLQCandProducer_cff")
 process.p = cms.Path(
     process.allEvents
     *process.evtcleaner
-    *process.cleanedEvents
-    *cms.ignore(process.ana)
-    * process.finalEvents
+    # *process.cleanedEvents
+    *process.ana   
+    #*cms.ignore(process.ana)
+    #  * process.finalEvents
     )
 
 #process.schedule = cms.Schedule(process.p)

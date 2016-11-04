@@ -482,7 +482,11 @@ bool OS2LAna::filter(edm::Event& evt, const edm::EventSetup& iSetup) {
     }
     h1_["nob_ht"] ->Fill(htak4.getHT(), evtwt);
     h1_["nob_st"] ->Fill(ST, evtwt);
-
+    if (goodMet.at(0).getFullPt()<60){ 
+      h1_["nbjets_met_0btagcnt"] -> Fill(goodBTaggedAK4Jets.size(), evtwt) ;
+      h1_["ht_met_0btagcnt"] ->Fill(htak4.getHT(), evtwt);
+      h1_["st_met_0btagcnt"] ->Fill(ST, evtwt);
+    }
   }
   
   else if (goodBTaggedAK4Jets.size() > 0){ 
@@ -490,11 +494,23 @@ bool OS2LAna::filter(edm::Event& evt, const edm::EventSetup& iSetup) {
       h1_["b_pt_z"+lep+lep] -> Fill(izll.getPt(), evtwt) ;
       h1_["b_st"] ->Fill(ST, evtwt);
     }
-    if (goodMet.at(0).getFullPt()<60){ h1_["nbjets_met_cnt"] -> Fill(goodBTaggedAK4Jets.size(), evtwt) ;}
+    h1_["1b_ht"] ->Fill(htak4.getHT(), evtwt);
+    h1_["1b_st"] ->Fill(ST, evtwt);
+    if (goodMet.at(0).getFullPt()<60){
+      h1_["nbjets_met_1btagcnt"] -> Fill(goodBTaggedAK4Jets.size(), evtwt) ;
+      h1_["ht_met_1btagcnt"] ->Fill(htak4.getHT(), evtwt);
+      h1_["st_met_1btagcnt"] ->Fill(ST, evtwt);
+    
+    }
   }
   
-
-  //fill control plots
+  if (goodMet.at(0).getFullPt()<60){ 
+    h1_["nbjets_met_cnt"] -> Fill(goodBTaggedAK4Jets.size(), evtwt) ;
+    h1_["lowmet_ht"] ->Fill(htak4.getHT(), evtwt);
+    h1_["lowmet_st"] ->Fill(ST, evtwt);
+  }
+ 
+ //fill control plots
   if ( goodBTaggedAK4Jets.size() > 0 && ST < 700) {
     for (auto izll : zll) {
       h1_["mass_z"+lep+lep+"_cnt"] -> Fill(izll.getMass(), evtwt) ;  
@@ -862,6 +878,20 @@ void OS2LAna::beginJob() {
   //addition nb plots
   h1_["nbjets_met_sig"] = sig.make<TH1D>("nbjets_sig", ";N(b jets);;" , 11, -0.5,10.5) ;
   h1_["nbjets_met_cnt"] = sig.make<TH1D>("nbjets_cnt", ";N(b jets);;" , 11, -0.5,10.5) ;
+  h1_["nbjets_met_0btagcnt"] = sig.make<TH1D>("nbjets_0btagcnt", ";N(b jets);;" , 11, -0.5,10.5) ;
+  h1_["nbjets_met_1btagcnt"] = sig.make<TH1D>("nbjets_1btagcnt", ";N(b jets);;" , 11, -0.5,10.5) ;
+  
+  h1_["ht_met_0btagcnt"]   =  sig.make<TH1D>( "ht_0btagcnt", ";H_{T} (AK4 jets) [GeV]", 100, 0., 4000.) ;
+  h1_["1b_ht"]   =  sig.make<TH1D>( "1b_ht", ";H_{T} (AK4 jets) [GeV]", 100, 0., 4000.) ;
+  h1_["ht_met_1btagcnt"]   =  sig.make<TH1D>( "ht_1btagcnt", ";H_{T} (AK4 jets) [GeV]", 100, 0., 4000.) ;
+  h1_["lowmet_ht"]   =  sig.make<TH1D>("lowmet_ht", ";H_{T} (AK4 jets) [GeV]", 100, 0., 4000.) ;
+
+  h1_["st_met_0btagcnt"]   =  sig.make<TH1D>( "st_0btagcnt", ";S_{T} [GeV]", 100, 0., 4000.) ;
+  h1_["1b_st"]   =  sig.make<TH1D>( "1b_st", ";S_{T} [GeV]", 100, 0., 4000.) ;
+  h1_["st_met_1btagcnt"]   =  sig.make<TH1D>( "st_1btagcnt", ";S_{T} [GeV]", 100, 0., 4000.) ;
+  h1_["lowmet_st"]   =  sig.make<TH1D>("lowmet_st", ";S_{T} [GeV]", 100, 0., 4000.) ;
+
+
 
   h1_["ptbjetleading"]  = sig.make<TH1D>("ptbjetleading", ";p_{T}(leading b jet) [GeV];;" , 50, 0., 1000.) ; 
   h1_["etabjetleading"] = sig.make<TH1D>("etabjetleading", ";#eta(leading b jet);;" , 80 ,-4. ,4.) ;

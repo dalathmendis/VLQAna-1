@@ -1,0 +1,523 @@
+DEBUG 2016-01-14 17:42:20,470: 	 Executing command: 'submit'
+DEBUG 2016-01-14 17:42:20,471: 	 Found CRAB cache file /uscms/home/skhalil/.crab3
+DEBUG 2016-01-14 17:42:20,485: 	 Checking credentials
+DEBUG 2016-01-14 17:42:20,485: 	 Found proxy file /tmp/x509up_u44569
+DEBUG 2016-01-14 17:42:20,485: 	 Getting proxy life time left
+DEBUG 2016-01-14 17:42:20,588: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u44569 -timeleft
+ output : 603204
+
+ error: 
+ retcode : 0
+DEBUG 2016-01-14 17:42:20,691: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u44569 -actimeleft
+ output : 603204
+
+ error: 
+ retcode : 0
+DEBUG 2016-01-14 17:42:20,691: 	 Proxy valid for 167:33:24 hours
+INFO 2016-01-14 17:42:20,691: 	 Will use CRAB configuration file Zelel/crab_TT-powheg-pythia8-ext3_os2lana_v1.py
+DEBUG 2016-01-14 17:42:20,692: 	 Loading CRAB configuration file.
+ERROR 2016-01-14 17:42:20,695: 	 Error while loading CRAB configuration:
+invalid syntax (crab_TT-powheg-pythia8-ext3_os2lana_v1.py, line 20)
+Please refer to https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3CommonErrors#Syntax_error_in_CRAB_configurati
+See the ./crab.log file for more details.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+ERROR 2016-01-14 17:42:20,695: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc481/cms/crabclient/3.3.1512/bin/crab", line 159, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc481/cms/crabclient/3.3.1512/bin/crab", line 145, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc481/cms/crabclient/3.3.1512/lib/python2.6/site-packages/CRABClient/Commands/submit.py", line 32, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc481/cms/crabclient/3.3.1512/lib/python2.6/site-packages/CRABClient/Commands/SubCommand.py", line 295, in __init__
+    self.loadConfig(self.options.config, self.args)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc481/cms/crabclient/3.3.1512/lib/python2.6/site-packages/CRABClient/Commands/SubCommand.py", line 84, in loadConfig
+    raise ConfigurationException(configmsg)
+ConfigurationException: Error while loading CRAB configuration:
+invalid syntax (crab_TT-powheg-pythia8-ext3_os2lana_v1.py, line 20)
+Please refer to https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3CommonErrors#Syntax_error_in_CRAB_configurati
+See the ./crab.log file for more details.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+DEBUG 2016-10-26 23:12:29,644: 	 Executing command: 'submit'
+DEBUG 2016-10-26 23:12:29,645: 	 Could not find CRAB cache file /uscms/home/dmendis/.crab3; creating a new one.
+DEBUG 2016-10-26 23:12:29,654: 	 Checking credentials
+DEBUG 2016-10-26 23:12:29,654: 	 Found proxy file /tmp/x509up_u50533
+DEBUG 2016-10-26 23:12:29,654: 	 Getting proxy life time left
+DEBUG 2016-10-26 23:12:29,757: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -timeleft
+ output : 604615
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-26 23:12:29,860: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -actimeleft
+ output : 604615
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-26 23:12:29,860: 	 Proxy valid for 167:56:55 hours
+INFO 2016-10-26 23:12:29,860: 	 Will use CRAB configuration file Zmumu/crab_DY_100-200_newbatch.py
+DEBUG 2016-10-26 23:12:29,861: 	 Loading CRAB configuration file.
+ERROR 2016-10-26 23:12:29,864: 	 Error while loading CRAB configuration:
+invalid syntax (crab_DY_100-200_newbatch.py, line 17)
+Please refer to https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3CommonErrors#Syntax_error_in_CRAB_configurati
+See the ./crab.log file for more details.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+ERROR 2016-10-26 23:12:29,864: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 298, in __init__
+    self.loadConfig(self.options.config, self.args)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 84, in loadConfig
+    raise ConfigurationException(configmsg)
+ConfigurationException: Error while loading CRAB configuration:
+invalid syntax (crab_DY_100-200_newbatch.py, line 17)
+Please refer to https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3CommonErrors#Syntax_error_in_CRAB_configurati
+See the ./crab.log file for more details.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+DEBUG 2016-10-26 23:14:59,875: 	 Executing command: 'submit'
+DEBUG 2016-10-26 23:14:59,875: 	 Found CRAB cache file /uscms/home/dmendis/.crab3
+DEBUG 2016-10-26 23:14:59,882: 	 Checking credentials
+DEBUG 2016-10-26 23:14:59,882: 	 Found proxy file /tmp/x509up_u50533
+DEBUG 2016-10-26 23:14:59,882: 	 Getting proxy life time left
+DEBUG 2016-10-26 23:14:59,985: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -timeleft
+ output : 604465
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-26 23:15:00,088: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -actimeleft
+ output : 604464
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-26 23:15:00,088: 	 Proxy valid for 167:54:25 hours
+INFO 2016-10-26 23:15:00,088: 	 Will use CRAB configuration file Zmumu/crab_DY_100-200_newbatch.py
+DEBUG 2016-10-26 23:15:00,088: 	 Loading CRAB configuration file.
+ERROR 2016-10-26 23:15:00,091: 	 Error while loading CRAB configuration:
+invalid syntax (crab_DY_100-200_newbatch.py, line 17)
+Please refer to https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3CommonErrors#Syntax_error_in_CRAB_configurati
+See the ./crab.log file for more details.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+ERROR 2016-10-26 23:15:00,091: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 298, in __init__
+    self.loadConfig(self.options.config, self.args)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 84, in loadConfig
+    raise ConfigurationException(configmsg)
+ConfigurationException: Error while loading CRAB configuration:
+invalid syntax (crab_DY_100-200_newbatch.py, line 17)
+Please refer to https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3CommonErrors#Syntax_error_in_CRAB_configurati
+See the ./crab.log file for more details.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+DEBUG 2016-10-26 23:16:22,700: 	 Executing command: 'submit'
+DEBUG 2016-10-26 23:16:22,701: 	 Found CRAB cache file /uscms/home/dmendis/.crab3
+DEBUG 2016-10-26 23:16:22,707: 	 Checking credentials
+DEBUG 2016-10-26 23:16:22,707: 	 Found proxy file /tmp/x509up_u50533
+DEBUG 2016-10-26 23:16:22,707: 	 Getting proxy life time left
+DEBUG 2016-10-26 23:16:22,810: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -timeleft
+ output : 604382
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-26 23:16:22,913: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -actimeleft
+ output : 604382
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-26 23:16:22,913: 	 Proxy valid for 167:53:02 hours
+INFO 2016-10-26 23:16:22,913: 	 Will use CRAB configuration file Zmumu/crab_DY_100-200_newbatch.py
+DEBUG 2016-10-26 23:16:22,913: 	 Loading CRAB configuration file.
+ERROR 2016-10-26 23:16:22,916: 	 Error while loading CRAB configuration:
+invalid syntax (crab_DY_100-200_newbatch.py, line 17)
+Please refer to https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3CommonErrors#Syntax_error_in_CRAB_configurati
+See the ./crab.log file for more details.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+ERROR 2016-10-26 23:16:22,916: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 298, in __init__
+    self.loadConfig(self.options.config, self.args)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 84, in loadConfig
+    raise ConfigurationException(configmsg)
+ConfigurationException: Error while loading CRAB configuration:
+invalid syntax (crab_DY_100-200_newbatch.py, line 17)
+Please refer to https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3CommonErrors#Syntax_error_in_CRAB_configurati
+See the ./crab.log file for more details.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+DEBUG 2016-10-26 23:20:11,520: 	 Executing command: 'submit'
+DEBUG 2016-10-26 23:20:11,521: 	 Found CRAB cache file /uscms/home/dmendis/.crab3
+DEBUG 2016-10-26 23:20:11,526: 	 Checking credentials
+DEBUG 2016-10-26 23:20:11,527: 	 Found proxy file /tmp/x509up_u50533
+DEBUG 2016-10-26 23:20:11,527: 	 Getting proxy life time left
+DEBUG 2016-10-26 23:20:11,629: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -timeleft
+ output : 604153
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-26 23:20:11,732: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -actimeleft
+ output : 604153
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-26 23:20:11,732: 	 Proxy valid for 167:49:13 hours
+INFO 2016-10-26 23:20:11,733: 	 Will use CRAB configuration file Zmumu/crab_DY_100-200_newbatch.py
+DEBUG 2016-10-26 23:20:11,733: 	 Loading CRAB configuration file.
+ERROR 2016-10-26 23:20:11,735: 	 Error while loading CRAB configuration:
+invalid syntax (crab_DY_100-200_newbatch.py, line 17)
+Please refer to https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3CommonErrors#Syntax_error_in_CRAB_configurati
+See the ./crab.log file for more details.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+ERROR 2016-10-26 23:20:11,735: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 298, in __init__
+    self.loadConfig(self.options.config, self.args)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 84, in loadConfig
+    raise ConfigurationException(configmsg)
+ConfigurationException: Error while loading CRAB configuration:
+invalid syntax (crab_DY_100-200_newbatch.py, line 17)
+Please refer to https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3CommonErrors#Syntax_error_in_CRAB_configurati
+See the ./crab.log file for more details.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+DEBUG 2016-10-26 23:31:44,467: 	 Executing command: 'submit'
+DEBUG 2016-10-26 23:31:44,467: 	 Found CRAB cache file /uscms/home/dmendis/.crab3
+DEBUG 2016-10-26 23:31:44,474: 	 Checking credentials
+DEBUG 2016-10-26 23:31:44,474: 	 Found proxy file /tmp/x509up_u50533
+DEBUG 2016-10-26 23:31:44,474: 	 Getting proxy life time left
+DEBUG 2016-10-26 23:31:44,577: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -timeleft
+ output : 603460
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-26 23:31:44,680: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -actimeleft
+ output : 603460
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-26 23:31:44,680: 	 Proxy valid for 167:37:40 hours
+INFO 2016-10-26 23:31:44,680: 	 Will use CRAB configuration file Zmumu/crab_DY_100-200_newbatch.py
+DEBUG 2016-10-26 23:31:44,680: 	 Loading CRAB configuration file.
+DEBUG 2016-10-26 23:31:44,683: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+ERROR 2016-10-26 23:31:44,684: 	 Working area '/uscms_data/d3/dmendis/80x/CMSSW_8_0_15/src/Analysis/VLQAna/test/CRAB_On_B2GEDM/newbatch/crab_DY_100-200_newbatch' already exists 
+Please change the requestName in the config file
+ERROR 2016-10-26 23:31:44,684: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 302, in __init__
+    getattr(self.configuration.General, 'requestName', None))
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/ClientUtilities.py", line 394, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+ConfigException: Working area '/uscms_data/d3/dmendis/80x/CMSSW_8_0_15/src/Analysis/VLQAna/test/CRAB_On_B2GEDM/newbatch/crab_DY_100-200_newbatch' already exists 
+Please change the requestName in the config file
+DEBUG 2016-10-27 00:01:38,945: 	 Executing command: 'status'
+DEBUG 2016-10-27 00:01:38,946: 	 Found CRAB cache file /uscms/home/dmendis/.crab3
+ERROR 2016-10-27 00:01:38,953: 	 Error: dmendis_crab_DY_100-200_newbatch2 is not a valid CRAB project directory.
+ERROR 2016-10-27 00:01:38,953: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 257, in __init__
+    self.validateOptions()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/status.py", line 755, in validateOptions
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 566, in validateOptions
+    raise ConfigurationException(msg)
+ConfigurationException: [91mError[0m: dmendis_crab_DY_100-200_newbatch2 is not a valid CRAB project directory.
+DEBUG 2016-10-31 15:01:26,334: 	 Executing command: 'submit'
+DEBUG 2016-10-31 15:01:26,335: 	 Found CRAB cache file /uscms/home/dmendis/.crab3
+DEBUG 2016-10-31 15:01:26,351: 	 Checking credentials
+DEBUG 2016-10-31 15:01:26,352: 	 Found proxy file /tmp/x509up_u50533
+DEBUG 2016-10-31 15:01:26,352: 	 Getting proxy life time left
+DEBUG 2016-10-31 15:01:26,455: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -timeleft
+ output : 604782
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-31 15:01:26,558: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -actimeleft
+ output : 604782
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-31 15:01:26,558: 	 Proxy valid for 167:59:42 hours
+INFO 2016-10-31 15:01:26,558: 	 Will use CRAB configuration file Zmumu/crab_tZtZ800_newbatch.py
+DEBUG 2016-10-31 15:01:26,559: 	 Loading CRAB configuration file.
+ERROR 2016-10-31 15:01:26,572: 	 Error while loading CRAB configuration:
+invalid syntax (crab_tZtZ800_newbatch.py, line 13)
+Please refer to https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3CommonErrors#Syntax_error_in_CRAB_configurati
+See the ./crab.log file for more details.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+ERROR 2016-10-31 15:01:26,572: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 298, in __init__
+    self.loadConfig(self.options.config, self.args)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 84, in loadConfig
+    raise ConfigurationException(configmsg)
+ConfigurationException: Error while loading CRAB configuration:
+invalid syntax (crab_tZtZ800_newbatch.py, line 13)
+Please refer to https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3CommonErrors#Syntax_error_in_CRAB_configurati
+See the ./crab.log file for more details.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+DEBUG 2016-10-31 15:08:38,562: 	 Executing command: 'submit'
+DEBUG 2016-10-31 15:08:38,563: 	 Found CRAB cache file /uscms/home/dmendis/.crab3
+DEBUG 2016-10-31 15:08:38,570: 	 Checking credentials
+DEBUG 2016-10-31 15:08:38,570: 	 Found proxy file /tmp/x509up_u50533
+DEBUG 2016-10-31 15:08:38,571: 	 Getting proxy life time left
+DEBUG 2016-10-31 15:08:38,673: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -timeleft
+ output : 604350
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-31 15:08:38,776: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -actimeleft
+ output : 604350
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-31 15:08:38,777: 	 Proxy valid for 167:52:30 hours
+INFO 2016-10-31 15:08:38,777: 	 Will use CRAB configuration file Zmumu/crab_tZtZ800_newbatch.py
+DEBUG 2016-10-31 15:08:38,777: 	 Loading CRAB configuration file.
+ERROR 2016-10-31 15:08:38,779: 	 Error while loading CRAB configuration:
+invalid syntax (crab_tZtZ800_newbatch.py, line 13)
+Please refer to https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3CommonErrors#Syntax_error_in_CRAB_configurati
+See the ./crab.log file for more details.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+ERROR 2016-10-31 15:08:38,779: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 298, in __init__
+    self.loadConfig(self.options.config, self.args)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 84, in loadConfig
+    raise ConfigurationException(configmsg)
+ConfigurationException: Error while loading CRAB configuration:
+invalid syntax (crab_tZtZ800_newbatch.py, line 13)
+Please refer to https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3CommonErrors#Syntax_error_in_CRAB_configurati
+See the ./crab.log file for more details.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+DEBUG 2016-10-31 15:11:56,811: 	 Executing command: 'submit'
+DEBUG 2016-10-31 15:11:56,812: 	 Found CRAB cache file /uscms/home/dmendis/.crab3
+DEBUG 2016-10-31 15:11:56,817: 	 Checking credentials
+DEBUG 2016-10-31 15:11:56,817: 	 Found proxy file /tmp/x509up_u50533
+DEBUG 2016-10-31 15:11:56,817: 	 Getting proxy life time left
+DEBUG 2016-10-31 15:11:56,919: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -timeleft
+ output : 604152
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-31 15:11:57,022: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -actimeleft
+ output : 604152
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-31 15:11:57,022: 	 Proxy valid for 167:49:12 hours
+INFO 2016-10-31 15:11:57,022: 	 Will use CRAB configuration file Zmumu/crab_tZtZ800_newbatch.py
+DEBUG 2016-10-31 15:11:57,022: 	 Loading CRAB configuration file.
+ERROR 2016-10-31 15:11:57,025: 	 Error while loading CRAB configuration:
+invalid syntax (crab_tZtZ800_newbatch.py, line 13)
+Please refer to https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3CommonErrors#Syntax_error_in_CRAB_configurati
+See the ./crab.log file for more details.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+ERROR 2016-10-31 15:11:57,025: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 298, in __init__
+    self.loadConfig(self.options.config, self.args)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 84, in loadConfig
+    raise ConfigurationException(configmsg)
+ConfigurationException: Error while loading CRAB configuration:
+invalid syntax (crab_tZtZ800_newbatch.py, line 13)
+Please refer to https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3CommonErrors#Syntax_error_in_CRAB_configurati
+See the ./crab.log file for more details.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+DEBUG 2016-10-31 15:17:17,523: 	 Executing command: 'submit'
+DEBUG 2016-10-31 15:17:17,524: 	 Found CRAB cache file /uscms/home/dmendis/.crab3
+DEBUG 2016-10-31 15:17:17,531: 	 Checking credentials
+DEBUG 2016-10-31 15:17:17,532: 	 Found proxy file /tmp/x509up_u50533
+DEBUG 2016-10-31 15:17:17,532: 	 Getting proxy life time left
+DEBUG 2016-10-31 15:17:17,634: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -timeleft
+ output : 603831
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-31 15:17:17,738: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -actimeleft
+ output : 603831
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-31 15:17:17,738: 	 Proxy valid for 167:43:51 hours
+INFO 2016-10-31 15:17:17,738: 	 Will use CRAB configuration file Zmumu/crab_tZtZ800_newbatch.py
+DEBUG 2016-10-31 15:17:17,739: 	 Loading CRAB configuration file.
+ERROR 2016-10-31 15:17:17,743: 	 Error while loading CRAB configuration:
+name 'SIGNALTYPE' is not defined
+Please refer to https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3CommonErrors#Syntax_error_in_CRAB_configurati
+See the ./crab.log file for more details.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+ERROR 2016-10-31 15:17:17,743: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 298, in __init__
+    self.loadConfig(self.options.config, self.args)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 84, in loadConfig
+    raise ConfigurationException(configmsg)
+ConfigurationException: Error while loading CRAB configuration:
+name 'SIGNALTYPE' is not defined
+Please refer to https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3CommonErrors#Syntax_error_in_CRAB_configurati
+See the ./crab.log file for more details.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+DEBUG 2016-10-31 15:55:31,560: 	 Executing command: 'submit'
+DEBUG 2016-10-31 15:55:31,561: 	 Found CRAB cache file /uscms/home/dmendis/.crab3
+DEBUG 2016-10-31 15:55:31,568: 	 Checking credentials
+DEBUG 2016-10-31 15:55:31,568: 	 Found proxy file /tmp/x509up_u50533
+DEBUG 2016-10-31 15:55:31,568: 	 Getting proxy life time left
+DEBUG 2016-10-31 15:55:31,671: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -timeleft
+ output : 601537
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-31 15:55:31,775: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -actimeleft
+ output : 601537
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-31 15:55:31,775: 	 Proxy valid for 167:05:37 hours
+INFO 2016-10-31 15:55:31,775: 	 Will use CRAB configuration file Zmumu/crab_tZtZ800_newbatch1.py
+DEBUG 2016-10-31 15:55:31,775: 	 Loading CRAB configuration file.
+DEBUG 2016-10-31 15:55:31,779: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+ERROR 2016-10-31 15:55:31,780: 	 Working area '/uscms_data/d3/dmendis/80xnew/CMSSW_8_0_15/src/Analysis/VLQAna/test/CRAB_On_Skim/newbatch1/crab_tZtZ800_newbatch1' already exists 
+Please change the requestName in the config file
+ERROR 2016-10-31 15:55:31,780: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 302, in __init__
+    getattr(self.configuration.General, 'requestName', None))
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/ClientUtilities.py", line 394, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+ConfigException: Working area '/uscms_data/d3/dmendis/80xnew/CMSSW_8_0_15/src/Analysis/VLQAna/test/CRAB_On_Skim/newbatch1/crab_tZtZ800_newbatch1' already exists 
+Please change the requestName in the config file
+DEBUG 2016-11-03 07:39:30,623: 	 Executing command: 'submit'
+DEBUG 2016-11-03 07:39:30,624: 	 Found CRAB cache file /uscms/home/dmendis/.crab3
+DEBUG 2016-11-03 07:39:30,634: 	 Checking credentials
+DEBUG 2016-11-03 07:39:30,635: 	 Found proxy file /tmp/x509up_u50533
+DEBUG 2016-11-03 07:39:30,635: 	 Getting proxy life time left
+DEBUG 2016-11-03 07:39:30,738: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -timeleft
+ output : 604790
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-03 07:39:30,841: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u50533 -actimeleft
+ output : 604790
+
+ error: 
+ retcode : 0
+DEBUG 2016-11-03 07:39:30,841: 	 Proxy valid for 167:59:50 hours
+INFO 2016-11-03 07:39:30,841: 	 Will use CRAB configuration file Zmumu/crab_DoubleMuon_os2lanav1.py
+DEBUG 2016-11-03 07:39:30,841: 	 Loading CRAB configuration file.
+DEBUG 2016-11-03 07:39:30,873: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+ERROR 2016-11-03 07:39:30,874: 	 Working area '/uscms_data/d3/dmendis/80x/CMSSW_8_0_15/src/Analysis/VLQAna/test/CRAB_On_Skim/os2lanav1/crab_DoubleMuon_os2lanav1' already exists 
+Please change the requestName in the config file
+ERROR 2016-11-03 07:39:30,874: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 302, in __init__
+    getattr(self.configuration.General, 'requestName', None))
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/ClientUtilities.py", line 394, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+ConfigException: Working area '/uscms_data/d3/dmendis/80x/CMSSW_8_0_15/src/Analysis/VLQAna/test/CRAB_On_Skim/os2lanav1/crab_DoubleMuon_os2lanav1' already exists 
+Please change the requestName in the config file
+DEBUG 2016-11-03 15:16:21,170: 	 Executing command: 'status'
+DEBUG 2016-11-03 15:16:21,171: 	 Found CRAB cache file /uscms/home/dmendis/.crab3
+DEBUG 2016-11-03 15:16:29,087: 	 Executing command: 'status'
+DEBUG 2016-11-03 15:16:29,087: 	 Found CRAB cache file /uscms/home/dmendis/.crab3
+ERROR 2016-11-03 15:16:29,089: 	 Error: Zmumu/crab_DoubleMuon_os2lanav2.py is not a valid CRAB project directory.
+ERROR 2016-11-03 15:16:29,090: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 257, in __init__
+    self.validateOptions()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/status.py", line 755, in validateOptions
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 566, in validateOptions
+    raise ConfigurationException(msg)
+ConfigurationException: [91mError[0m: Zmumu/crab_DoubleMuon_os2lanav2.py is not a valid CRAB project directory.
