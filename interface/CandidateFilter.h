@@ -21,6 +21,27 @@ class CandidateFilter {
       return ; 
     }
 
+    void operator () (vlq::CandidateCollection& L1,vlq::CandidateCollection& L2, vlq::CandidateCollection& el1,vlq::CandidateCollection& el2 ) {
+     
+      el1.clear();
+      el2.clear();
+      TLorentzVector p4l1,p4l2;
+      for (unsigned i=0; i<L1.size();i++){
+	p4l1 = L1.at(i).getP4();
+	p4l2 = L2.at(i).getP4();
+      
+	
+	if ((p4l1+p4l2).Mag()>massMin_ && (p4l1+p4l2).Mag() < massMax_ && (p4l1+p4l2).Pt() > ptMin_ && (p4l1+p4l2).Pt() < ptMax_){ 
+	    
+	    
+	  el1.push_back(L1.at(i));
+	  el2.push_back(L2.at(i));
+	}
+      }
+      return ;
+    }
+
+
   private:
     double massMin_ ;
     double massMax_ ; 

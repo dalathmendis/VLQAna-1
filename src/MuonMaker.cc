@@ -105,6 +105,7 @@ void MuonMaker::operator () (edm::Event& evt, vlq::MuonCollection& muons) {
     double muPt = (h_muPt.product())->at(imu) ; 
     double muAbsEta  = std::abs((h_muEta.product())->at(imu)) ; 
     double muIso = (h_muIso04.product())->at(imu) ; 
+   
 
     bool passMuId(false) ; 
     if (type_ == LOOSE && (h_muIsLooseMuon.product())->at(imu) > 0) passMuId = true ;

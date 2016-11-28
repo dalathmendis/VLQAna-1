@@ -85,12 +85,18 @@ void ElectronMaker::operator () (edm::Event& evt, vlq::ElectronCollection& elect
     double ooEmooP =(h_elooEmooP.product())->at(iel);
     double hasMatchedConVeto=(h_elhasMatchedConVeto.product())->at(iel);
     double missHits=(h_elmissHits.product())->at(iel);
-    bool   isEB = (h_elscEta.product())->at(iel) < 1.479 ;
-  
+    bool   isEB = std::abs((h_elscEta.product())->at(iel)) < 1.479 ;
+      
+    bool elisLoose  = passElId("LOOSE" , isEB, dPhiIn, full5x5siee, HoE ,ooEmooP, elIso, missHits, hasMatchedConVeto,D0,Dz,dEtaIn );
+    bool elisMedium = passElId("MEDIUM", isEB, dPhiIn, full5x5siee, HoE,ooEmooP, elIso, missHits, hasMatchedConVeto,D0,Dz,dEtaIn ); 
+    bool elisTight  = passElId("TIGHT" , isEB, dPhiIn, full5x5siee, HoE, ooEmooP, elIso, missHits, hasMatchedConVeto,D0,Dz,dEtaIn );  
+    bool elisVeto   = passElId("VETO"  , isEB, dPhiIn, full5x5siee, HoE, ooEmooP, elIso, missHits, hasMatchedConVeto,D0,Dz,dEtaIn );  
+    /*
     bool elisLoose  = passElId("LOOSE" , isEB, dPhiIn, full5x5siee, HoE ,ooEmooP, elIso, missHits, hasMatchedConVeto);
-    bool elisMedium = passElId("MEDIUM", isEB, dPhiIn, full5x5siee, HoE,ooEmooP, elIso, missHits, hasMatchedConVeto); 
-    bool elisTight  = passElId("TIGHT" , isEB, dPhiIn, full5x5siee, HoE, ooEmooP, elIso, missHits, hasMatchedConVeto);  
-    bool elisVeto   = passElId("VETO"  , isEB, dPhiIn, full5x5siee, HoE, ooEmooP, elIso, missHits, hasMatchedConVeto);  
+    bool elisMedium = passElId("MEDIUM", isEB, dPhiIn, full5x5siee, HoE,ooEmooP, elIso, missHits, hasMatchedConVeto);
+    bool elisTight  = passElId("TIGHT" , isEB, dPhiIn, full5x5siee, HoE, ooEmooP, elIso, missHits, hasMatchedConVeto);
+    bool elisVeto   = passElId("VETO"  , isEB, dPhiIn, full5x5siee, HoE, ooEmooP, elIso, missHits, hasMatchedConVeto);
+    */
 
     bool passId(false); 
     if (type_ == LOOSE  && elisLoose ) passId = true ;
@@ -138,46 +144,85 @@ void ElectronMaker::operator () (edm::Event& evt, vlq::ElectronCollection& elect
 }
 
 //new 8_0_x
-bool ElectronMaker::passElId(string WP, bool isEB, float dPhiIn, float full5x5, float hoe, float ooemoop,float Iso03,int missHits, bool conveto){ 
+bool ElectronMaker::passElId(string WP, bool isEB, float dPhiIn, float full5x5, float hoe, float ooemoop,float Iso03,int missHits, bool conveto,double d0, double dz, double detaIn ){ 
    
    bool pass = false;
    if(WP == "VETO"){
       if(isEB){
-         pass = (fabs(dPhiIn) < 0.228) && (full5x5 < 0.0115) && (hoe < 0.356) && (ooemoop < 0.299) && (Iso03 < 0.175)  && (missHits <= 2) && !conveto;
+	pass = (fabs(dPhiIn) < 0.228) && (full5x5 < 0.0115) && (hoe < 0.356) && (ooemoop < 0.299) && (Iso03 < 0.175)  && (missHits <= 2) && !conveto && (d0< 0.02) && (dz<0.02) && (fabs(detaIn)<0.01);
       }
       else{
-         pass = (fabs(dPhiIn) < 0.213) && (full5x5 < 0.037) && (hoe < 0.211) &&  (ooemoop < 0.15) && (Iso03 < 0.159) && (missHits <= 3) && !conveto;
+	pass = (fabs(dPhiIn) < 0.213) && (full5x5 < 0.037) && (hoe < 0.211) &&  (ooemoop < 0.15) && (Iso03 < 0.159) && (missHits <= 3) && !conveto && (d0< 0.01) && (dz<0.01) && (fabs(detaIn)<0.01);
       }
    }
    else if(WP == "LOOSE"){
       if(isEB){
-         pass = (fabs(dPhiIn) < 0.222) && (full5x5 <  0.011) && (hoe < 0.298)  && (ooemoop <  0.241) && (Iso03 < 0.0994) && (missHits <= 1) && !conveto;
+	pass = (fabs(dPhiIn) < 0.222) && (full5x5 <  0.011) && (hoe < 0.298)  && (ooemoop <  0.241) && (Iso03 < 0.0994) && (missHits <= 1) && !conveto && (d0< 0.02) && (dz<0.02) && (fabs(detaIn)<0.01);
       }
       else{
-         pass =(fabs(dPhiIn) < 0.213) && (full5x5 < 0.0314) && (hoe < 0.101)  && (ooemoop < 0.14) && (Iso03 < 0.107)  && (missHits <= 1) && !conveto;
+	pass =(fabs(dPhiIn) < 0.213) && (full5x5 < 0.0314) && (hoe < 0.101)  && (ooemoop < 0.14) && (Iso03 < 0.107)  && (missHits <= 1) && !conveto && (d0< 0.01) && (dz<0.01) && (fabs(detaIn)<0.01);
       }
    }
    else if(WP == "MEDIUM"){
       if(isEB){
-         pass = (fabs(dPhiIn) < 0.103) && (full5x5 < 0.00998) && (hoe < 0.253) && (ooemoop < 0.134) && (Iso03 < 0.0695)  && (missHits <= 1) && !conveto;
+	pass = (fabs(dPhiIn) < 0.103) && (full5x5 < 0.00998) && (hoe < 0.253) && (ooemoop < 0.134) && (Iso03 < 0.0695)  && (missHits <= 1) && !conveto && (d0< 0.02) && (dz<0.02) && (fabs(detaIn)<0.01);
       }
       else{
-         pass =(fabs(dPhiIn) < 0.045) && (full5x5 <  0.0298) && (hoe < 0.0878) && (ooemoop < 0.13) && (Iso03 < 0.0821)  && (missHits <= 1) && !conveto;
+	pass =(fabs(dPhiIn) < 0.045) && (full5x5 <  0.0298) && (hoe < 0.0878) && (ooemoop < 0.13) && (Iso03 < 0.0821)  && (missHits <= 1) && !conveto && (d0< 0.01) && (dz<0.01) && (fabs(detaIn)<0.01);
       }
    }
    else if(WP == "TIGHT"){
       if(isEB){
-         pass = (fabs(dPhiIn) < 0.0816) && (full5x5 < 0.00998) && (hoe < 0.0414) &&  (ooemoop <  0.0129) && (Iso03 < 0.0588) && (missHits <= 1) && !conveto;
+	pass = (fabs(dPhiIn) < 0.0816) && (full5x5 < 0.00998) && (hoe < 0.0414) &&  (fabs(ooemoop) <  0.0129) && (Iso03 < 0.0588) && (missHits <= 1) && !conveto && (fabs(d0)< 0.03) && (fabs(dz)<0.03) && (fabs(detaIn)<0.01);
       }
       else{
-         pass =(fabs(dPhiIn) < 0.0394) && (full5x5 < 0.0292) && (hoe < 0.0641) && (ooemoop <  0.0129)  && (Iso03 < 0.0571) && (missHits <= 1) && !conveto;
+	pass =(fabs(dPhiIn) < 0.0394) && (full5x5 < 0.0292) && (hoe < 0.0641) && (fabs(ooemoop) <  0.0129)  && (Iso03 < 0.0571) && (missHits <= 1) && !conveto && (fabs(d0)< 0.03) && (fabs(dz) < 0.06) && (fabs(detaIn)<0.008);
       }
    }
    return pass;
-
-
-
 }
+/*
+//no cuts on d0,dz, and dphiin
+bool ElectronMaker::passElId(string WP, bool isEB, float dPhiIn, float full5x5, float hoe, float ooemoop,float Iso03,int missHits, bool conveto){
+
+  bool pass = false;
+  if(WP == "VETO"){
+    if(isEB){
+      pass = (fabs(dPhiIn) < 0.228) && (full5x5 < 0.0115) && (hoe < 0.356) && (ooemoop < 0.299) && (Iso03 < 0.175)  && (missHits <= 2) && !conveto ;
+    }
+    else{
+      pass = (fabs(dPhiIn) < 0.213) && (full5x5 < 0.037) && (hoe < 0.211) &&  (ooemoop < 0.15) && (Iso03 < 0.159) && (missHits <= 3) && !conveto;
+    }
+  }
+  else if(WP == "LOOSE"){
+    if(isEB){
+      pass = (fabs(dPhiIn) < 0.222) && (full5x5 <  0.011) && (hoe < 0.298)  && (ooemoop <  0.241) && (Iso03 < 0.0994) && (missHits <= 1) && !conveto ;
+    }
+    else{
+      pass =(fabs(dPhiIn) < 0.213) && (full5x5 < 0.0314) && (hoe < 0.101)  && (ooemoop < 0.14) && (Iso03 < 0.107)  && (missHits <= 1) && !conveto ;
+    }
+  }
+  else if(WP == "MEDIUM"){
+    if(isEB){
+      pass = (fabs(dPhiIn) < 0.103) && (full5x5 < 0.00998) && (hoe < 0.253) && (ooemoop < 0.134) && (Iso03 < 0.0695)  && (missHits <= 1) && !conveto ;
+    }
+    else{
+      pass =(fabs(dPhiIn) < 0.045) && (full5x5 <  0.0298) && (hoe < 0.0878) && (ooemoop < 0.13) && (Iso03 < 0.0821)  && (missHits <= 1) && !conveto ;
+    }
+  }
+  else if(WP == "TIGHT"){
+    if(isEB){
+      pass = (fabs(dPhiIn) < 0.0816) && (full5x5 < 0.00998) && (hoe < 0.0414) &&  (ooemoop <  0.0129) && (Iso03 < 0.0588) && (missHits <= 1) && !conveto;
+    }
+    else{
+      pass =(fabs(dPhiIn) < 0.0394) && (full5x5 < 0.0292) && (hoe < 0.0641) && (ooemoop <  0.0129)  && (Iso03 < 0.0571) && (missHits <= 1) && !conveto ;
+    }
+  }
+  return pass;
+}
+*/
+
+
 /*
 //7_6_X
 
@@ -221,5 +266,5 @@ bool ElectronMaker::passElId(string WP, bool isEB, float dEtaIn, float dPhiIn, f
 
 
 }
-
 */
+

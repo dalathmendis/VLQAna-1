@@ -185,9 +185,15 @@ class BTagSFUtils {
         double dsfUp = sfUp - sf ; 
         double dsfDown = sfDown - sf ;
         double eff = 1.0;
-        if ( op_ == BTagEntry::OP_LOOSE) eff = BTagSFUtils::getBTagEff_CSVv2L(pt,flhad) ; 
-        else if ( op_ == BTagEntry::OP_MEDIUM) eff = BTagSFUtils::getBTagEff_CSVv2M(pt,flhad) ; 
-        double uncscale = uncscales.at(idx.first) ; 
+        if ( op_ == BTagEntry::OP_LOOSE){
+	  eff = BTagSFUtils::getBTagEff_CSVv2L(pt,flhad) ; 
+	  //std:: cout << " WRONGGGGGGGGG " <<std::endl;
+	}
+        else if ( op_ == BTagEntry::OP_MEDIUM){
+	  eff = BTagSFUtils::getBTagEff_CSVv2M(pt,flhad) ; 
+	  //std:: cout << "correct one " << std::endl;
+	}
+	  double uncscale = uncscales.at(idx.first) ; 
         sfs.push_back(sf) ; 
         sfsUp.push_back(sfUp) ; 
         sfsDown.push_back(sfDown) ; 
