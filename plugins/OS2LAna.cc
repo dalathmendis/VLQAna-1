@@ -296,23 +296,6 @@ bool OS2LAna::filter(edm::Event& evt, const edm::EventSetup& iSetup) {
     double EWKNLOkfact(GetDYNLOCorr(dileptons.at(0).getPt())) ; 
     evtwt *= EWKNLOkfact ;
   }
-  //  cout << "event type " << *h_evttype.product() << endl;
-  //  cout << "apply lepton SF " << applyLeptonIDSFs_ << endl;
-
-  // if (applyLeptonIDSFs_ && *h_evttype.product() != "EvtType_Data") {
-  // if ( zdecayMode_ == "zmumu" ){
-      //  cout << "muons size " << goodMuons.size()<< endl;
-      // if (goodMuons.size()>=2){
-      //  cout <<"lepton 1 pt, eta =  " << goodMuons.at(0).getPt() << "," << goodMuons.at(0).getEta() <<endl;
-      //  cout <<"lepton 2 pt, eta =  " <<goodMuons.at(1).getPt() << "," << goodMuons.at(1).getEta() <<endl;
-      //   cout << " lep 1 ID SF is = " << lepIdSFs.IDSF(goodMuons.at(0).getPt(),goodMuons.at(0).getEta())<<endl;
-      //  cout << " lep 2 ID SF is =" <<lepIdSFs.IDSF(goodMuons.at(1).getPt(),goodMuons.at(1).getEta())<<endl;
-      //  cout << " lep 1 Iso SF is = " << lepIdSFs.IsoSF(goodMuons.at(0).getPt(),goodMuons.at(0).getEta()) <<endl;
-      //  cout << " lep 2 Iso SF is = " << lepIdSFs.IsoSF(goodMuons.at(1).getPt(),goodMuons.at(1).getEta()) <<endl;
-      //  }
-
-  // }
-  //  }
 
   //get lepton ID and Iso SF
   if (applyLeptonIDSFs_ && *h_evttype.product() != "EvtType_Data") {
