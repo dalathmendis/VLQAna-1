@@ -296,18 +296,36 @@ bool OS2LAna::filter(edm::Event& evt, const edm::EventSetup& iSetup) {
     double EWKNLOkfact(GetDYNLOCorr(dileptons.at(0).getPt())) ; 
     evtwt *= EWKNLOkfact ;
   }
+  //  cout << "event type " << *h_evttype.product() << endl;
+  //  cout << "apply lepton SF " << applyLeptonIDSFs_ << endl;
+
+  // if (applyLeptonIDSFs_ && *h_evttype.product() != "EvtType_Data") {
+  // if ( zdecayMode_ == "zmumu" ){
+      //  cout << "muons size " << goodMuons.size()<< endl;
+      // if (goodMuons.size()>=2){
+      //  cout <<"lepton 1 pt, eta =  " << goodMuons.at(0).getPt() << "," << goodMuons.at(0).getEta() <<endl;
+      //  cout <<"lepton 2 pt, eta =  " <<goodMuons.at(1).getPt() << "," << goodMuons.at(1).getEta() <<endl;
+      //   cout << " lep 1 ID SF is = " << lepIdSFs.IDSF(goodMuons.at(0).getPt(),goodMuons.at(0).getEta())<<endl;
+      //  cout << " lep 2 ID SF is =" <<lepIdSFs.IDSF(goodMuons.at(1).getPt(),goodMuons.at(1).getEta())<<endl;
+      //  cout << " lep 1 Iso SF is = " << lepIdSFs.IsoSF(goodMuons.at(0).getPt(),goodMuons.at(0).getEta()) <<endl;
+      //  cout << " lep 2 Iso SF is = " << lepIdSFs.IsoSF(goodMuons.at(1).getPt(),goodMuons.at(1).getEta()) <<endl;
+      //  }
+
+  // }
+  //  }
 
   //get lepton ID and Iso SF
   if (applyLeptonIDSFs_ && *h_evttype.product() != "EvtType_Data") {
     if ( zdecayMode_ == "zmumu" ){
-      evtwt *= lepIdSFs(goodMuons.at(0).getPt(),goodMuons.at(0).getEta()) * lepIdSFs(goodMuons.at(1).getPt(), goodMuons.at(1).getEta() ) ;}
+      //  evtwt *= lepIdSFs(goodMuons.at(0).getPt(),goodMuons.at(0).getEta()) * lepIdSFs(goodMuons.at(1).getPt(), goodMuons.at(1).getEta() ) ;}
+      evtwt *= lepIdSFs.IDSF(goodMuons.at(0).getPt(),goodMuons.at(0).getEta()) * lepIdSFs.IDSF(goodMuons.at(1).getPt(), goodMuons.at(1).getEta() ) * lepIdSFs.IsoSF(goodMuons.at(0).getPt(),goodMuons.at(0).getEta()) * lepIdSFs.IsoSF(goodMuons.at(1).getPt(), goodMuons.at(1).getEta() )  ;}
     else if ( zdecayMode_ == "zelel" ){ 
-      evtwt *= lepIdSFs(goodElectrons.at(0).getPt(),goodElectrons.at(0).getEta()) * lepIdSFs(goodElectrons.at(1).getPt(), goodElectrons.at(1).getEta() ) ;}
+      evtwt *= lepIdSFs.IDSF(goodElectrons.at(0).getPt(),goodElectrons.at(0).getEta()) * lepIdSFs.IDSF(goodElectrons.at(1).getPt(), goodElectrons.at(1).getEta() ) ;}
   }
 
   if (applyLeptonTrigSFs_ && *h_evttype.product() != "EvtType_Data") {
     if ( zdecayMode_ == "zmumu" ){
-      evtwt *= lepTrigSFs.TrigSFMu1(goodMuons.at(0).getPt(),goodMuons.at(0).getEta())*lepTrigSFs.TrigSFMu2(goodMuons.at(1).getPt(),goodMuons.at(1).getEta());
+      evtwt *= lepTrigSFs.TrigSFMu1(goodMuons.at(0).getPt(),goodMuons.at(0).getEta())*lepTrigSFs.TrigSFMu1(goodMuons.at(1).getPt(),goodMuons.at(1).getEta());
     }
     else if ( zdecayMode_ == "zelel" ){
       evtwt *=0.968256;
